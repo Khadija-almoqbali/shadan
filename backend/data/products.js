@@ -1,7 +1,6 @@
 const products = [
 
 {
-  _id: '1',
   name: 'Pearl Bridal Set',
   image: '/images/des2.png',
   description: 'Classic pearl set including necklace and earrings, perfect for weddings and special occasions.',
@@ -13,7 +12,6 @@ const products = [
   numReviews: 18,
 },
 {
-  _id: '2',
   name: 'Boho Layered Set',
   image: '/images/des3.png',
   description: 'Trendy bohemian set with layered necklace, bracelet, and matching earrings.',
@@ -25,7 +23,6 @@ const products = [
   numReviews: 10,
 },
 {
-  _id: '3',
   name: 'Crystal Glam Set',
   image: '/images/des4.png',
   description: 'Sparkling crystal jewelry set with necklace, earrings, and bracelet for party looks.',
@@ -37,7 +34,6 @@ const products = [
   numReviews: 9,
 },
 {
-  _id: '4',
   name: 'Rose Gold Elegant Set',
   image: '/images/des5.png',
   description: 'Soft rose gold set including matching necklace and bracelet with modern design.',
@@ -49,7 +45,6 @@ const products = [
   numReviews: 13,
 },
 {
-  _id: '5',
   name: 'Luxury Charm Set',
   image: '/images/des7.png',
   description: 'Stylish charm-based set including necklace, bracelet, and earrings with luxury feel.',
@@ -62,7 +57,6 @@ const products = [
 },
 
 {
-  _id: '6',
   name: 'Beaded Summer Set',
   image: '/images/des10.png',
   description: 'Colorful beaded jewelry set perfect for summer outfits and casual wear.',
@@ -74,7 +68,6 @@ const products = [
   numReviews: 6,
 },
 {
-  _id: '7',
   name: 'Star Shine Set',
   image: '/images/des11.png',
   description: 'Elegant star-themed jewelry set with subtle sparkling details.',
@@ -86,7 +79,6 @@ const products = [
   numReviews: 9,
 },
 {
-  _id: '8',
   name: 'Premium Wedding Set',
   image: '/images/des12.png',
   description: 'Premium complete bridal set with necklace, earrings, bracelet, and ring.',

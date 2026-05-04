@@ -86,3 +86,196 @@ table th {
   overflow: hidden;
 }
 
+/* home screen */
+/* ── Home Screen ── */
+.home-screen {
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: relative;
+  background: linear-gradient(135deg, #3A1F1A 0%, #5c3228 60%, #7a4438 100%);
+  color: #fff;
+  padding: 120px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Subtle texture overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(255,255,255,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Decorative bottom wave */
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #fff;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tagline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  opacity: 0.75;
+  margin-bottom: 36px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background: #fff;
+  color: #3A1F1A;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn:hover {
+  background: #f5ebe9;
+  color: #3A1F1A;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Products Section */
+.products-section {
+  padding: 70px 15px 80px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-header h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #3A1F1A;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.section-underline {
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: #3A1F1A;
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 80px 0;
+}
+
+/* Empty state */
+.no-products {
+  text-align: center;
+  color: #999;
+  padding: 60px 0;
+  font-size: 1rem;
+}
+
+/* heder*/
+/* ── Header ── */
+.site-header {
+  background-color: #3A1F1A !important;
+  padding: 10px 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+/* Brand / Logo */
+.header-brand img {
+  transition: opacity 0.2s ease;
+}
+
+.header-brand:hover img {
+  opacity: 0.85;
+}
+
+/* Nav links */
+.header-nav-link {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px !important;
+  border-radius: 50px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+}
+
+.nav-icon {
+  font-size: 1rem;
+}
+
+/* Mobile toggler */
+.header-toggler {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.header-toggler .navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Mobile collapsed menu */
+@media (max-width: 767px) {
+  #basic-navbar-nav {
+    background-color: #3A1F1A;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 12px 12px;
+  }
+
+  .header-nav-link {
+    border-radius: 8px;
+    margin: 2px 8px;
+  }
+}
+
