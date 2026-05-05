@@ -1,7 +1,17 @@
 .hero-banner {
   position: relative;
   height: 100vh;
-  
+
+  background: linear-gradient(
+    135deg,
+    #100705 0%,
+    #1f0f0c 35%,
+    #3A1F1A 65%,
+    #5A2E27 90%,
+    #cfcfcf 200%
+  );
+
+  clip-path: ellipse(120% 100% at 50% 0%);
 }
 
 /* Navbar inside hero */
@@ -14,6 +24,35 @@
 
 .custom-navbar {
   background: transparent !important;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 14px 40px;
+
+  background: linear-gradient(
+    135deg,
+    #EDEDED,
+    #FFFFFF
+  );
+
+  color: #3A1F1A;
+
+  border-radius: 999px; /* 👈 fully rounded pill */
+
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+
+  transition: all 2s ease;
+}
+
+.hero-btn:hover {
+  background: #EDEDED;
+  color: #3A1F1A;
 }
 
 /* overlay */
@@ -35,3 +74,27 @@
   text-align: center;
   color: white;
 }
+
+.menu-close-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .navbar-collapse.show .menu-close-btn {
+    display: block;
+
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+  }
+}
+
+
+

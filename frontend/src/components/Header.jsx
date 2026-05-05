@@ -23,18 +23,19 @@ const Header = () => {
         </LinkContainer>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" ref={navRef}>
+<Navbar.Collapse id="basic-navbar-nav" ref={navRef}>
+
   {/* X button (mobile only) */}
   <button
-  className="menu-close-btn"
-  type="button"
-  onClick={() => {
-    const el = document.getElementById("basic-navbar-nav");
-    if (el) el.classList.remove("show");
-  }}
->
-  ✕
-</button>
+    className="menu-close-btn"
+    type="button"
+    onClick={() => {
+      const el = document.getElementById("basic-navbar-nav");
+      if (el) el.classList.remove("show");
+    }}
+  >
+    ✕
+  </button>
 
   <Nav className="ms-auto">
 
