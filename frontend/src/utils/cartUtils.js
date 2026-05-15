@@ -10,7 +10,7 @@ export const updateCart = (state) =>{
             //calculate tax price (5% tax)
             state.taxPrice = addDecimals(Number((0.05 * state.itemsPrice).toFixed(2)));
             //calculate total price
-            state.totlaPrice = (
+            state.totalPrice = (
                 Number(state.itemsPrice)+
                 Number(state.shippingPrice)+
                 Number(state.taxPrice)
