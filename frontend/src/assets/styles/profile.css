@@ -1,0 +1,115 @@
+:root {
+    --brown: #260606;
+    --dark-brown: #260606;
+    --gold: #260606;
+    --text: #260606;
+    --muted: #260606;
+    --border: rgba(38, 6, 6, 0.12);
+}
+
+/* PAGE BACKGROUND (WHITE ONLY) */
+.profile-wrapper {
+    background: #ffffff;
+    min-height: 100vh;
+    padding: 30px 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* REMOVE HEAVY CARD FEEL (LIGHT BORDER ONLY) */
+.profile-card {
+    background: transparent;
+    padding: 10px 0;
+}
+
+/* TITLE */
+.profile-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark-brown);
+    margin-bottom: 18px;
+    letter-spacing: 0.3px;
+}
+
+.profile-title::after {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    display: block;
+    margin-top: 6px;
+    border-radius: 10px;
+}
+
+/* INPUTS (CLEAN LUXURY) */
+.lux-input {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px;
+    color: var(--text);
+    transition: 0.25s ease;
+}
+
+.lux-input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.15);
+}
+
+/* LABELS */
+.form-label {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* BUTTON (SIMPLE LUXURY) */
+.lux-btn {
+    background: var(--brown);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    transition: 0.25s ease;
+}
+
+.lux-btn:hover {
+    background: var(--dark-brown);
+    transform: translateY(-1px);
+}
+
+/* TABLE (MINIMAL CLEAN LOOK) */
+.lux-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lux-table th {
+    text-align: left;
+    font-size: 12px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 8px;
+}
+
+.lux-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+/* ICON */
+.icon-fail {
+    color: #b91c1c;
+}
+
+/* DETAILS BUTTON */
+.btn-light {
+    background: transparent !important;
+    border: 1px solid var(--gold) !important;
+    color: var(--dark-brown) !important;
+    border-radius: 8px;
+}
+
+.btn-light:hover {
+    background: var(--gold) !important;
+    color: #fff !important;
+}

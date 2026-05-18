@@ -9,19 +9,21 @@ import generateToken from '../utils/generateToken.js';
 const authUser = asyncHandler(async (req,res) => {
     const { email, password } = req.body;
 
-    const user = await User.findOne({email});
+    const user = await User.findOne({ email });
 
     if(user && (await user.matchPassword(password))){
-        
-       generateToken(res, user._id);
+
+        const token = generateToken(res, user._id);
 
         res.status(200).json({
             _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            token, // ✔️ استخدمي token اللي رجع من generateToken
         });
-    }else{
+
+    } else {
         res.status(401);
         throw new Error('Invalid email or password');
     }

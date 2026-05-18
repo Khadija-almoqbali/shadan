@@ -81,12 +81,6 @@ const Header = () => {
     </NavDropdown.Item>
   </LinkContainer>
 
-  <LinkContainer to="/orders">
-    <NavDropdown.Item className="lux-dropdown-item">
-      Orders
-    </NavDropdown.Item>
-  </LinkContainer>
-
   <NavDropdown.Divider />
   <NavDropdown.Item
     onClick={logoutHandler}
@@ -101,6 +95,25 @@ const Header = () => {
         <FaUser /> Sign In
       </Nav.Link>
     </LinkContainer>
+  )}
+  {userInfo && userInfo.isAdmin && (
+    <NavDropdown title='Admin' id="adminmenu" className="lux-user-dropdown">
+      <LinkContainer to='/admin/productlist'>
+        <NavDropdown.Item className="lux-dropdown-item">
+          Products
+      </NavDropdown.Item>
+      </LinkContainer>
+      <LinkContainer to='/admin/userlist'>
+        <NavDropdown.Item className="lux-dropdown-item">
+          Users
+      </NavDropdown.Item>
+      </LinkContainer>
+      <LinkContainer to='/admin/orderlist'>
+        <NavDropdown.Item className="lux-dropdown-item">
+          Orders
+      </NavDropdown.Item>
+      </LinkContainer>
+    </NavDropdown>
   )}
    
 

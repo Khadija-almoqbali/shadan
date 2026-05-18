@@ -22,7 +22,13 @@ import ShippingScreen from './screens/ShippingScreen';
 import PrivateRoute from './components/PrivateRoute';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
-
+import OrderScreen from './screens/OrderScreen';
+import PaymentSuccessScreen from './screens/PaymentSuccessScreen';
+import PaymentCancelScreen from './screens/PaymentCancelScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import AdminRoute from './components/AdminRoute';
+import OrderListScreen from './screens/admin/OrderListScreen';
+import ProductListScreen from './screens/admin/ProductListScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,7 +43,17 @@ const router = createBrowserRouter(
       <Route path="/shipping" element={<ShippingScreen/>} />
       <Route path="/payment" element={<PaymentScreen/>} />
       <Route path="/placeorder" element={<PlaceOrderScreen/>} />
+      <Route path="/order/:id" element={<OrderScreen/>} />
+      <Route path="/success" element={<PaymentSuccessScreen />} />
+      <Route path="/cancel" element={<PaymentCancelScreen />} />
+      <Route path="/profile" element={<ProfileScreen />} />
     </Route>
+
+   <Route path='' element={<AdminRoute />}>
+      <Route path='admin/orderlist' element={<OrderListScreen />} />
+      <Route path='admin/productlist' element={<ProductListScreen />} />
+    </Route>
+    
   </Route>
   )
 );

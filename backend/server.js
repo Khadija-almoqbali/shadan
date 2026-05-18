@@ -1,37 +1,71 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
-dotenv.config();
-import connectDB from './config/db.js';
-import {notFound, errorHandler} from './middleware/errorMiddleware.js';
-import productRoutes from './routes/productRoute.js';
-import userRoutes from './routes/userRoute.js';
-import orderRoutes from './routes/orderRoute.js';
+import express from "express";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
-const port = process.env.PORT || 8000; //frontend run in 3000
+dotenv.config();
+import connectDB from "./config/db.js";
+
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+
+import productRoutes from "./routes/productRoute.js";
+import userRoutes from "./routes/userRoute.js";
+import orderRoutes from "./routes/orderRoute.js";
+import paymentRoutes from "./routes/paymentRoutes.js"; // 👈 NEW
+
+
+const port = process.env.PORT || 8000;
 
 connectDB();
+
 const app = express();
 
-//body parser middleware
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+// 🔥 CORS (مهم جدًا للدفع + frontend)
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
-//cookie parser middleware
+// body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// cookies
 app.use(cookieParser());
 
-//first route
-app.get('/', (req,res) => {
-    res.send('Api is running...');
+// ===================== ROUTES =====================
+
+// base route
+app.get("/", (req, res) => {
+  res.send("API is running...");
 });
 
-app.use('/api/products', productRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/orders', orderRoutes);
+// main routes
+app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoutes);
 
+// 💳 payment routes (Amwal Pay)
+app.use("/api/payments", paymentRoutes);
+
+// 🔐 config (public key for frontend)
+app.get("/api/config/amwalpay", (req, res) => {
+  if (!process.env.AMWALPAY_PUBLIC_KEY) {
+    return res.status(500).json({ message: "AmwalPay key missing" });
+  }
+
+  res.json({
+    publicKey: process.env.AMWALPAY_PUBLIC_KEY,
+  });
+});
+
+// ===================== ERROR HANDLING =====================
 app.use(notFound);
 app.use(errorHandler);
 
-
-
-app.listen(port, () => console.log(`server running on port ${port}`));
+// ===================== START SERVER =====================
+app.listen(port, () =>
+  console.log(`server running on port ${port}`)
+);

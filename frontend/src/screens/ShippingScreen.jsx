@@ -72,7 +72,7 @@ const submitHandler = (e) => {
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
             type="text"
-            placeholder="+968 9123 4567"
+            placeholder="+968"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             className="lux-input"
