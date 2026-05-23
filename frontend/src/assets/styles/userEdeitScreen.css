@@ -1,0 +1,169 @@
+
+
+/* الكارد */
+.lux-edit-card {
+  width: 100%;
+  max-width: 1020px;
+
+  background: #ffffff;
+
+  border-radius: 28px;
+
+  padding: 40px;
+
+  border: 1px solid #ededed;
+
+  box-shadow:
+    0 12px 40px rgba(58, 31, 26, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+
+  transition: all 0.3s ease;
+  margin-top: 70px;
+}
+
+/* العنوان */
+.lux-title {
+  text-align: center;
+
+  color: #3A1F1A;
+
+  font-size: 2rem;
+
+  font-weight: 700;
+
+  margin-bottom: 35px;
+
+  letter-spacing: 0.5px;
+}
+
+/* الليبل */
+.lux-label {
+  color: #5A2E27;
+
+  font-weight: 600;
+
+  margin-bottom: 10px;
+
+  display: block;
+}
+
+/* الانبوت */
+.lux-input {
+  border-radius: 16px !important;
+
+  border: 1px solid #dddddd !important;
+
+  background: #ffffff !important;
+
+  color: #3A1F1A !important;
+
+  padding: 14px 16px !important;
+
+  font-size: 15px !important;
+
+  transition: all 0.3s ease !important;
+}
+
+/* focus */
+.lux-input:focus {
+  border-color: #5A2E27 !important;
+
+  box-shadow:
+    0 0 0 0.2rem rgba(90, 46, 39, 0.15) !important;
+
+  background: #fff !important;
+}
+
+/* checkbox */
+.lux-check-wrapper {
+  padding-left: 5px;
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #3A1F1A !important;
+
+  border-color: #3A1F1A !important;
+}
+
+.form-check-label {
+  color: #5A2E27;
+
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+/* الزر */
+.lux-btn {
+  width: 100%;
+
+  border: none !important;
+
+  border-radius: 16px !important;
+
+  padding: 14px !important;
+
+  font-size: 16px !important;
+
+  font-weight: 600 !important;
+
+  letter-spacing: 0.5px;
+
+  background: linear-gradient(
+    135deg,
+    #3A1F1A,
+    #5A2E27
+  ) !important;
+
+  transition: all 0.3s ease !important;
+
+  margin-top: 10px;
+}
+
+/* hover */
+.lux-btn:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.96;
+
+  box-shadow:
+    0 10px 24px rgba(58, 31, 26, 0.25);
+}
+
+/* زر الرجوع */
+.btn-light {
+  background: #ffffff !important;
+
+  border: 1px solid #e7e7e7 !important;
+
+  color: #3A1F1A !important;
+
+  border-radius: 12px !important;
+
+  padding: 10px 18px !important;
+
+  font-weight: 500 !important;
+
+  transition: all 0.3s ease !important;
+}
+
+.btn-light:hover {
+  background: #f7f7f7 !important;
+
+  transform: translateY(-1px);
+}
+
+/* responsive */
+@media (max-width: 576px) {
+  .lux-edit-card {
+    padding: 28px 22px;
+  }
+
+  .lux-title {
+    font-size: 1.7rem;
+  }
+}

@@ -1,42 +1,169 @@
+body {
+  background: #ffffff;
+  font-family: inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 .lux-header {
-  padding: 10px 0;
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .lux-title {
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.5px;
   color: #1c1c1c;
+  margin: 0;
 }
 
 .lux-subtitle {
   color: #888;
   font-size: 14px;
+  margin-top: 4px;
 }
 
-/* CREATE BUTTON */
+/* RIGHT SIDE */
+.lux-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.lux-search input {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 240px;
+  transition: 0.25s ease;
+}
+
+.lux-search input:focus {
+  border-color: #3a1f1a;
+  box-shadow: 0 0 0 3px rgba(58, 31, 26, 0.08);
+  outline: none;
+}
+
+/* =========================
+   CREATE BUTTON
+========================= */
+
 .lux-create-btn {
-  background: linear-gradient(135deg, #290a0a, #333);
-  border: none;
+  background: #3a1f1a !important;
+  border: none !important;
+  color: white !important;
+
   padding: 10px 16px;
   border-radius: 12px;
+
   font-weight: 500;
-  transition: 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: 0.25s ease;
 }
 
 .lux-create-btn:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #000, #444);
+  transform: translateY(-3px);
+  background: #5a2e27 !important;
 }
 
-/* TABLE WRAPPER */
+/* =========================
+   STATS ROW (UPGRADED)
+========================= */
+
+.lux-stats-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.lux-stat-card {
+  flex: 1;
+  min-width: 180px;
+
+  background: #ffffff;
+  border: 1px solid #ededed;
+  border-radius: 16px;
+
+  padding: 18px 20px;
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: all 0.3s ease;
+}
+
+/* accent line */
+.lux-stat-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12%;
+  height: 76%;
+  width: 4px;
+
+  background: linear-gradient(180deg, #3a1f1a, #5a2e27);
+  border-radius: 10px;
+}
+
+
+
+/* NUMBER */
+.lux-stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #3a1f1a;
+  line-height: 1;
+}
+
+/* LABEL */
+.lux-stat-label {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* HOVER */
+.lux-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #dcdcdc;
+  box-shadow: 0 12px 25px rgba(58, 31, 26, 0.08);
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+
 .lux-table-wrapper {
   background: #fff;
   padding: 15px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
-/* TABLE */
+/* =========================
+   TABLE
+========================= */
+
 .lux-table {
   border: none;
 }
@@ -46,22 +173,36 @@
   font-size: 13px;
   color: #777;
   letter-spacing: 0.5px;
+  padding: 14px;
 }
 
-/* ROW */
+.lux-row {
+  transition: 0.2s ease;
+}
+
 .lux-row:hover {
   background: #fafafa;
-  transition: 0.2s;
 }
 
-/* BADGE */
+/* =========================
+   BADGE
+========================= */
+
 .lux-badge {
-  background: #f4f4f4;
-  padding: 4px 10px;
+  background: rgba(58, 31, 26, 0.08);
+  color: #3a1f1a;
+
+  padding: 6px 12px;
   border-radius: 20px;
+
   font-size: 12px;
-  color: #333;
+  font-weight: 600;
 }
+
+/* =========================
+   ACTIONS
+========================= */
+
 .lux-action-cell {
   vertical-align: middle !important;
 }
@@ -72,27 +213,24 @@
   align-items: center;
   gap: 10px;
 }
-.lux-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-}
 
-/* base button */
+/* BUTTON BASE */
 .lux-action-btn {
   width: 38px;
   height: 38px;
+
   background: #fff;
   border: 1.5px solid transparent;
+
   border-radius: 10px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   transition: 0.25s ease;
 }
 
-/* icon styling */
 .lux-action-btn svg {
   font-size: 14px;
 }
@@ -102,7 +240,6 @@
   border-color: #200606;
   color: #200606;
 }
-
 
 .lux-edit:hover {
   background: #200606;
@@ -120,9 +257,38 @@
   background: #d11a2a;
   color: #fff;
   transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(209, 26, 42, 0.2);
 }
 
-/* alignment fix */
-.lux-action-cell {
-  vertical-align: middle !important;
+/* =========================
+   PRICE
+========================= */
+
+.price-text {
+  color: #3a1f1a;
+  font-weight: 700;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: #5a2e27;
+  opacity: 0.25;
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  color: #1c1c1c;
+}
+
+.empty-state p {
+  color: #888;
 }

@@ -1,0 +1,86 @@
+:root {
+  --primary: #3A1F1A;
+  --secondary: #5A2E27;
+  --white: #FFFFFF;
+  --light: #EDEDED;
+}
+
+/* ===== Page Background ===== */
+.lux-edit-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+  background: transparent; /* مهم */
+}
+
+/* ===== Card ===== */
+.lux-edit-card {
+  width: 100%;
+  max-width: 1100px; /* كان 750px */
+  background: var(--white);
+  border-radius: 18px;
+  padding: 40px; /* أكبر شوي */
+  border: 1px solid #eaeaea;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Title ===== */
+.lux-title {
+  color: var(--primary);
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* ===== Labels ===== */
+.lux-label {
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===== Inputs ===== */
+.lux-input {
+  background: var(--white) !important;
+  border: 1px solid #ddd !important;
+  color: var(--primary) !important;
+  border-radius: 10px !important;
+  padding: 10px 12px !important;
+  transition: 0.3s;
+}
+
+.lux-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(58, 31, 26, 0.1) !important;
+}
+
+/* ===== Button ===== */
+.lux-btn {
+  width: 100%;
+  background: var(--primary);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: var(--white);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.lux-btn:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(90, 46, 39, 0.25);
+}
+
+/* ===== Image Preview ===== */
+.lux-img-preview {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid #e5e5e5;
+}
