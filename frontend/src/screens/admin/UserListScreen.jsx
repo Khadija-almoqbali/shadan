@@ -51,7 +51,7 @@ const UserListScreen = () => {
   return (
     <>
       {/* Header */}
-      <div className="lux-header">
+      <div className="lux-page-header">
         <div>
           <h1 className="lux-title">Users Management</h1>
           <p className="lux-subtitle">

@@ -101,7 +101,7 @@ const OrderListScreen = () => {
   return (
     <>
       {/* HEADER */}
-      <div className="lux-header">
+      <div className="lux-page-header">
         <div>
           <h1 className="lux-title">Orders</h1>
           <p className="lux-subtitle">Manage and export all orders</p>

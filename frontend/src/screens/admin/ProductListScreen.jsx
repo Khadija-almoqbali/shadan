@@ -94,7 +94,7 @@ const ProductListScreen = () => {
   return (
     <>
       {/* HEADER */}
-      <div className="lux-header">
+      <div className="lux-page-header">
         <div>
           <h1 className="lux-title">
             Products Management
@@ -105,7 +105,7 @@ const ProductListScreen = () => {
           </p>
         </div>
 
-        <div className="lux-header-right">
+        <div className="lux-page-header-right">
           {/* SEARCH */}
           <div className="lux-search">
             <Form.Control

@@ -4,7 +4,7 @@
    HEADER
 ========================= */
 
-.lux-header {
+.lux-page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;

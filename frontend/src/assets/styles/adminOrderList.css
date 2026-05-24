@@ -11,7 +11,7 @@ body {
    🧭 HEADER FIX (IMPORTANT)
 ========================= */
 
-.lux-header {
+.lux-page-header{
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -23,13 +23,13 @@ body {
 }
 
 /* LEFT SIDE (TEXT FIXED) */
-.lux-header > div:first-child {
+.lux-page-header > div:first-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.lux-header {
+.lux-page-header {
   display: flex;
   justify-content: space-between;
   align-items: center !important;
@@ -39,13 +39,13 @@ body {
 
   padding: 12px 0;
 }
-.lux-header h1,
-.lux-header h2,
-.lux-header p {
+.lux-page-header h1,
+.lux-page-header h2,
+.lux-page-header p {
   margin: 0 !important;
   padding: 0 !important;
 }
-.lux-header > div:first-child {
+.lux-page-header > div:first-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
