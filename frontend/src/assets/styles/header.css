@@ -1,7 +1,7 @@
 main,
 .lux-page-header,
 .page-content {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 /* =========================
@@ -14,10 +14,10 @@ main,
 
   background: linear-gradient(
     135deg,
-    #100705 0%,
+    #1f0f0c 0%,
     #1f0f0c 35%,
-    #3A1F1A 65%,
-    #5A2E27 90%,
+    #1f0f0c 65%,
+    #1f0f0c 90%,
     #cfcfcf 200%
   );
 
@@ -195,7 +195,7 @@ main,
   main,
   .lux-page-header,
   .page-content {
-    margin-top: 40px;
+    margin-top: 55px;
   }
 
   /* 🔥 مهم يمنع مشاكل Bootstrap */
@@ -215,34 +215,42 @@ main,
   /* =========================
      MENU BOX
   ========================= */
+.navbar-collapse.show {
+  position: absolute;
 
-  .navbar-collapse.show {
-    position: absolute;
+  top: 0px;
+  right: 0px;
 
-    top: 20px;
-    right: 0px;
+  width: 220px;
 
-    width: 240px;
-    
+  background: rgba(31, 15, 12, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-    background: #1f0f0c;
+  border: 1px solid rgba(255,255,255,0.08);
 
-    border-radius: 18px;
+  
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
 
-    padding: 50px 16px 16px;
 
-    display: flex !important;
-    flex-direction: column;
+  padding: 50px 16px 18px;
 
-    align-items: flex-end;
+  display: flex !important;
+  flex-direction: column;
 
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  align-items: flex-end;
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 
-    z-index: 99999;
-  }
+  z-index: 99999;
+}
+
+.hero-banner .navbar-collapse.show {
+  top: 0; /* يبدأ من أعلى الصفحة في home فقط */
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
 
   /* nav items */
   .navbar-collapse.show .navbar-nav {
