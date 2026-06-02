@@ -156,7 +156,6 @@ const OrderListScreen = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <div className="lux-table-wrapper">
           <Table hover responsive className="lux-table">
             <thead>
               <tr>
@@ -214,7 +213,7 @@ const OrderListScreen = () => {
               ))}
             </tbody>
           </Table>
-        </div>
+        
       )}
     </>
   );
