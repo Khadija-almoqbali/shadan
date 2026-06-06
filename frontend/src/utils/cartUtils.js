@@ -3,6 +3,7 @@ export const addDecimals = (num) => {
 };
 
 export const updateCart = (state) => {
+  
   // Calculate items price
   state.itemsPrice = addDecimals(
     state.cartItems.reduce(
@@ -37,9 +38,10 @@ export const updateCart = (state) => {
   const cartKey = userInfo?._id
     ? `cart_${userInfo._id}`
     : "cart_guest";
-
+  console.log("Current cart key:", cartKey);
   // Save cart per user
   localStorage.setItem(cartKey, JSON.stringify(state));
 
   return state;
+  
 };

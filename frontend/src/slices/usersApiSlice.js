@@ -4,7 +4,6 @@ import { USERS_URL } from "../constants";
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
 
-    // 🔐 Login
     login: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/auth`,
@@ -13,7 +12,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    // 🔐 Logout
     logout: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/logout`,
@@ -21,7 +19,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    // 📝 Register
     register: builder.mutation({
       query: (data) => ({
         url: USERS_URL,
@@ -30,7 +27,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    // 👤 Get Profile
     profile: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/profile`,
@@ -39,7 +35,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    // 👥 Get All Users (Admin)
     getUsers: builder.query({
       query: () => ({
         url: USERS_URL
@@ -71,7 +66,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-// ✅ Export hooks
 export const {
   useLoginMutation,
   useLogoutMutation,

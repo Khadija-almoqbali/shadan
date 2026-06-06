@@ -3,9 +3,6 @@ body {
   font-family: inherit;
 }
 
-/* =========================
-   HEADER
-========================= */
 
 .lux-page-header {
   padding: 12px 0;
@@ -37,9 +34,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* =========================
-   SEARCH
-========================= */
 
 .lux-search input {
   border: 1px solid #eee;
@@ -55,9 +49,6 @@ body {
   outline: none;
 }
 
-/* =========================
-   CREATE BUTTON
-========================= */
 
 .lux-create-btn {
   background: #3a1f1a !important;
@@ -81,9 +72,6 @@ body {
   background: #5a2e27 !important;
 }
 
-/* =========================
-   STATS ROW (UPGRADED)
-========================= */
 
 .lux-stats-row {
   display: flex;
@@ -149,9 +137,6 @@ body {
   box-shadow: 0 12px 25px rgba(58, 31, 26, 0.08);
 }
 
-/* =========================
-   TABLE WRAPPER
-========================= */
 
 .lux-table-wrapper {
   background: #fff;
@@ -160,9 +145,6 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
-/* =========================
-   TABLE
-========================= */
 
 .lux-table {
   border: none;
@@ -184,10 +166,6 @@ body {
   background: #fafafa;
 }
 
-/* =========================
-   BADGE
-========================= */
-
 .lux-badge {
   background: rgba(58, 31, 26, 0.08);
   color: #3a1f1a;
@@ -199,9 +177,6 @@ body {
   font-weight: 600;
 }
 
-/* =========================
-   ACTIONS
-========================= */
 
 .lux-action-cell {
   vertical-align: middle !important;
@@ -260,18 +235,12 @@ body {
   box-shadow: 0 8px 18px rgba(209, 26, 42, 0.2);
 }
 
-/* =========================
-   PRICE
-========================= */
 
 .price-text {
   color: #3a1f1a;
   font-weight: 700;
 }
 
-/* =========================
-   EMPTY STATE
-========================= */
 
 .empty-state {
   text-align: center;

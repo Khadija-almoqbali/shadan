@@ -12,6 +12,7 @@ import store from './store';
 import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
 import App from './App';
+import {HelmetProvider} from 'react-helmet-async';
 import reportWebVitals from './reportWebVitals';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
@@ -32,6 +33,7 @@ import ProductListScreen from './screens/admin/ProductListScreen';
 import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,9 +68,11 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <HelmetProvider>
     <Provider store={store}>
     <RouterProvider router={router} />
     </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 

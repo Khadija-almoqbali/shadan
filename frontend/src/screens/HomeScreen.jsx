@@ -41,6 +41,7 @@ const HomeScreen = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
+        <>
         <div className='home-screen' id="products">
           <Container className='products-section' >
             
@@ -117,6 +118,7 @@ const HomeScreen = () => {
 
           </Container>
         </div>
+        </>
       )}
     </>
   );

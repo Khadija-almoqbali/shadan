@@ -12,7 +12,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import productRoutes from "./routes/productRoute.js";
 import userRoutes from "./routes/userRoute.js";
 import orderRoutes from "./routes/orderRoute.js";
-import paymentRoutes from "./routes/paymentRoutes.js"; // 👈 NEW
+import paymentRoutes from "./routes/paymentRoutes.js";
 import uploadRoutes from './routes/uploadRoutes.js'
 
 
@@ -22,7 +22,6 @@ connectDB();
 
 const app = express();
 
-// 🔥 CORS (مهم جدًا للدفع + frontend)
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -37,7 +36,6 @@ app.use(express.urlencoded({ extended: true }));
 // cookies
 app.use(cookieParser());
 
-// ===================== ROUTES =====================
 
 // base route
 app.get("/", (req, res) => {
@@ -50,10 +48,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use('/api/upload', uploadRoutes);
 
-// 💳 payment routes (Amwal Pay)
 app.use("/api/payments", paymentRoutes);
 
-// 🔐 config (public key for frontend)
 app.get("/api/config/amwalpay", (req, res) => {
   if (!process.env.AMWALPAY_PUBLIC_KEY) {
     return res.status(500).json({ message: "AmwalPay key missing" });
@@ -66,11 +62,9 @@ app.get("/api/config/amwalpay", (req, res) => {
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
-// ===================== ERROR HANDLING =====================
 app.use(notFound);
 app.use(errorHandler);
 
-// ===================== START SERVER =====================
 app.listen(port, () =>
   console.log(`server running on port ${port}`)
 );

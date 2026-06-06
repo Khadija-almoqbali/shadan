@@ -82,7 +82,7 @@
 /*steps*/
 .checkout-steps {
   display: flex;
-  justify-content: flex-start; /* 👈 مهم عشان ما يختفي Sign In */
+  justify-content: flex-start; 
   align-items: center;
   gap: 40px;
 
@@ -93,14 +93,13 @@
 
   padding: 20px 10px 10px;
 
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none; 
 }
 
 .checkout-steps::-webkit-scrollbar {
-  display: none; /* Chrome */
+  display: none; 
 }
 
-/* كل خطوة */
 .step {
   position: relative;
   font-size: 13px;
@@ -112,11 +111,10 @@
   text-align: center;
 
   flex: 0 0 auto;
-  min-width: 90px; /* 👈 مهم جدًا */
+  min-width: 90px; 
   padding-top: 30px;
 }
 
-/* الدائرة */
 .step::before {
   content: "";
   position: absolute;
@@ -129,8 +127,6 @@
   background: #EDEDED;
   transition: 0.3s ease;
 }
-
-/* الخط */
 .step:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -247,18 +243,12 @@
 
 
 /* place order Screen */
-/* =========================
-   PAGE WRAPPER (NO EXTRA CONTAINERS)
-========================= */
 
 .checkout-page {
   padding: 20px;
   background: #ffffff;
 }
 
-/* =========================
-   MAIN CARD (ONLY ONE CONTAINER)
-========================= */
 
 .checkout-card {
   max-width: 1200px;
@@ -270,18 +260,12 @@
   padding: 20px;
 }
 
-/* =========================
-   ORDER ITEMS
-========================= */
 
 .product-item {
   padding: 12px;
   border-bottom: 1px solid #f3e8de;
 }
 
-/* =========================
-   SUMMARY CARD
-========================= */
 
 .summary-card {
   background: #fff;
@@ -292,7 +276,7 @@
 
 .sticky-summary {
   position: sticky;
-  top: 20px; /* المسافة من فوق */
+  top: 20px; 
 }
 
 .checkout-steps {
@@ -305,10 +289,6 @@
   flex-wrap: wrap;
   text-align: center;
 }
-
-/* =========================
-   MOBILE FIX (IMPORTANT)
-========================= */
 
 @media (max-width: 768px) {
 

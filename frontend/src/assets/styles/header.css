@@ -4,10 +4,6 @@ main,
   margin-top: 60px;
 }
 
-/* =========================
-   HERO (HOME ONLY)
-========================= */
-
 .hero-banner {
   position: relative;
   height: 100vh;
@@ -37,9 +33,6 @@ main,
   background: transparent !important;
 }
 
-/* =========================
-   DEFAULT NAVBAR
-========================= */
 
 .lux-header {
   position: sticky;
@@ -52,9 +45,6 @@ main,
   justify-content: center;
 }
 
-/* =========================
-   LUX NAVBAR
-========================= */
 
 .lux-navbar {
   position: fixed;
@@ -77,10 +67,6 @@ main,
   z-index: 9999;
 }
 
-/* =========================
-   FORCE WHITE TEXT
-========================= */
-
 .lux-navbar,
 .lux-navbar a,
 .lux-navbar .nav-link,
@@ -92,9 +78,6 @@ main,
   color: #fff !important;
 }
 
-/* =========================
-   HERO CONTENT
-========================= */
 
 .hero-overlay {
   position: absolute;
@@ -118,9 +101,6 @@ main,
   color: white;
 }
 
-/* =========================
-   BUTTON
-========================= */
 
 .hero-btn {
   display: inline-block;
@@ -148,9 +128,6 @@ main,
   color: #3A1F1A;
 }
 
-/* =========================
-   CART BADGE
-========================= */
 
 .cart-badge {
   margin-left: 6px !important;
@@ -178,17 +155,11 @@ main,
   isolation: isolate;
 }
 
-/* =========================
-   MOBILE CLOSE BUTTON
-========================= */
 
 .menu-close-btn {
   display: none;
 }
 
-/* =========================
-   MOBILE MENU
-========================= */
 
 @media (max-width: 768px) {
 
@@ -198,7 +169,6 @@ main,
     margin-top: 55px;
   }
 
-  /* 🔥 مهم يمنع مشاكل Bootstrap */
   .navbar-collapse:not(.show) {
     display: none !important;
   }
@@ -212,9 +182,6 @@ main,
     transform: translateY(-10px) !important;
   }
 
-  /* =========================
-     MENU BOX
-  ========================= */
 .navbar-collapse.show {
   position: absolute;
 
@@ -247,7 +214,7 @@ main,
 }
 
 .hero-banner .navbar-collapse.show {
-  top: 0; /* يبدأ من أعلى الصفحة في home فقط */
+  top: 0;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
@@ -265,10 +232,6 @@ main,
     text-align: right;
     justify-content: flex-end;
   }
-
-  /* =========================
-     CLOSE BUTTON
-  ========================= */
 
   .menu-close-btn {
     display: flex !important;
@@ -298,9 +261,6 @@ main,
   }
 }
 
-/* =========================
-   DESKTOP FIX
-========================= */
 
 @media (min-width: 769px) {
 
@@ -327,9 +287,6 @@ main,
   }
 }
 
-/* =========================
-   USER DROPDOWN (GLASS STYLE)
-========================= */
 
 .lux-user-dropdown .dropdown-menu {
   background: rgba(31, 15, 12, 0.35) !important;

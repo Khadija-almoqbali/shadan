@@ -16,7 +16,9 @@ const ShippingScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState(shippingAddress?.phoneNumber || "");
   const [country, setCountry] = useState(shippingAddress?.country || "");
 
-    useEffect(() => {
+  const [error, setError] = useState("");
+
+  useEffect(() => {
     if (shippingAddress?.phoneNumber) {
       setPhoneNumber(shippingAddress.phoneNumber);
     }
@@ -25,17 +27,18 @@ const ShippingScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
-  
-
-
-const submitHandler = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
+
+    if (!address || !city || !phoneNumber || !country) {
+      setError("Please fill in all shipping details before continuing");
+      return;
+    }
+
+    setError("");
     dispatch(saveShippingAddress({address, city, phoneNumber, country}));
     navigate("/payment");
-}
-
-
+  }
 
   return (
   <div className="checkout-wrapper">
@@ -43,6 +46,13 @@ const submitHandler = (e) => {
       <CheckoutSteps step1 step2 />
       <h2 className="checkout-title">Shipping Details</h2>
       <p className="checkout-subtitle">Please enter your delivery information</p>
+
+      {/* 👇 رسالة الخطأ */}
+      {error && (
+        <div style={{ color: "red", marginBottom: "10px", fontWeight: "bold" }}>
+          {error}
+        </div>
+      )}
       
       <Form onSubmit={submitHandler}>
 
@@ -100,4 +110,4 @@ const submitHandler = (e) => {
 );
 }
 
-export default ShippingScreen
+export default ShippingScreen;

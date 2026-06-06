@@ -10,11 +10,6 @@ export const createAmwalPayment = async (req, res) => {
       return res.status(404).json({ message: "Order not found" });
     }
 
-    // 🔥 Mock checkout URL (للتجربة الآن)
-    //const checkout_url = `https://amwalpay.com/checkout/session_${orderId}`;
-
-    //res.json({ checkout_url });
-
     res.json({
   checkout_url: "http://localhost:3000/success"
     });

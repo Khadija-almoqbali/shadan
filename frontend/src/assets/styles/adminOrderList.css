@@ -1,15 +1,8 @@
-/* =========================
-   💎 GLOBAL
-========================= */
 
 body {
   background: #ffffff;
   font-family: inherit;
 }
-
-/* =========================
-   🧭 HEADER FIX (IMPORTANT)
-========================= */
 
 .lux-page-header{
   display: flex;
@@ -22,7 +15,6 @@ body {
   padding: 12px 0;
 }
 
-/* LEFT SIDE (TEXT FIXED) */
 .lux-page-header > div:first-child {
   display: flex;
   flex-direction: column;
@@ -59,9 +51,6 @@ body {
   margin-top: 4px;
 }
 
-/* =========================
-   🔍 SEARCH
-========================= */
 
 .lux-search input {
   border: 1px solid #ededed;
@@ -79,9 +68,6 @@ body {
   outline: none;
 }
 
-/* =========================
-   📊 STATS
-========================= */
 
 .stats-wrapper {
   display: flex;
@@ -141,9 +127,6 @@ body {
   box-shadow: 0 12px 25px rgba(58, 31, 26, 0.08);
 }
 
-/* =========================
-   🧾 BILL BUTTON
-========================= */
 
 .lux-bill-btn {
   background: linear-gradient(135deg, #2b0606, #3a0a0a);
@@ -174,9 +157,6 @@ body {
   border: 1px solid #e6cfcf;
 }
 
-/* =========================
-   📋 TABLE
-========================= */
 
 .lux-table {
   width: 100%;

@@ -1,6 +1,3 @@
-
-
-/* الكارد */
 .lux-edit-card {
   width: 100%;
   max-width: 1020px;
@@ -21,7 +18,6 @@
   margin-top: 70px;
 }
 
-/* العنوان */
 .lux-title {
   text-align: center;
 
@@ -36,7 +32,6 @@
   letter-spacing: 0.5px;
 }
 
-/* الليبل */
 .lux-label {
   color: #5A2E27;
 
@@ -46,8 +41,6 @@
 
   display: block;
 }
-
-/* الانبوت */
 .lux-input {
   border-radius: 16px !important;
 
@@ -97,7 +90,6 @@
   cursor: pointer;
 }
 
-/* الزر */
 .lux-btn {
   width: 100%;
 
@@ -134,7 +126,6 @@
     0 10px 24px rgba(58, 31, 26, 0.25);
 }
 
-/* زر الرجوع */
 .btn-light {
   background: #ffffff !important;
 

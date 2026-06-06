@@ -4,3 +4,118 @@
   border-radius: 12px !important;
   border: 1px solid #e7d7cc !important;
 }
+
+
+
+.review-section {
+  padding: 60px 10px;
+  background: #FFFFFF;
+}
+
+
+.review-title {
+  color: #3A1F1A;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.review-title::after {
+  content: "";
+  width: 70px;
+  height: 2px;
+  background: #5A2E27;
+  display: block;
+  margin-top: 8px;
+  border-radius: 10px;
+}
+
+
+.review-list {
+  border: none;
+  background: transparent;
+}
+
+.review-item {
+  border: none;
+  border-bottom: 1px solid #EDEDED;
+  padding: 18px 0;
+  background: transparent;
+}
+
+
+.review-name {
+  color: #3A1F1A;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #5A2E27;
+  margin: 5px 0;
+  opacity: 0.8;
+}
+
+.review-comment {
+  color: #444;
+  line-height: 1.7;
+  margin-top: 5px;
+}
+
+
+.review-rating {
+  margin-top: 5px;
+}
+
+
+.review-form-wrapper {
+  border: none;
+  background: transparent;
+  padding: 25px 0;
+  margin-top: 30px;
+}
+
+.review-form-title {
+  color: #3A1F1A;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* inputs minimal style */
+.form-label {
+  color: #3A1F1A;
+  font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+  border: 1px solid #EDEDED;
+  border-radius: 6px;
+  padding: 10px;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #5A2E27;
+  box-shadow: 0 0 0 0.15rem rgba(90, 46, 39, 0.15);
+}
+
+
+.review-button {
+  background: #3A1F1A;
+  border: none;
+  color: #FFFFFF;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.review-button:hover {
+  background: #5A2E27;
+  transform: translateY(-1px);
+}

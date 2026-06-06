@@ -159,12 +159,10 @@
   gap: 0.5rem;
 }
 
-/* 🧾 Status Box Container */
 .lux-status-box {
   margin-top: 12px;
 }
 
-/* ✅ Delivered */
 .lux-status-success {
   display: flex;
   align-items: center;
@@ -178,17 +176,15 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-/* 🧾 container */
 .lux-status-box {
   margin-top: 12px;
 }
 
 
 
-/* ❌ DANGER (soft red + brown border) */
 .lux-status-danger {
-  background: #ffbdbd; /* أحمر فاتح مريح */
-  color: #3a1a1a; /* بني محمّر */
+  background: #ffbdbd;
+  color: #3a1a1a; 
   padding: 12px 14px;
   border-radius: 12px;
   font-size: 13px;

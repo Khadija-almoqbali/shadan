@@ -20,7 +20,7 @@ const authUser = asyncHandler(async (req,res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            token, // ✔️ استخدمي token اللي رجع من generateToken
+            token,
         });
 
     } else {

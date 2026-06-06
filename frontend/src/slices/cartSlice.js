@@ -77,6 +77,9 @@ const cartSlice = createSlice({
 
       updateCart(state);
     },
+    loadCart: (state, action) => {
+      return action.payload;
+    },
   },
 });
 
@@ -87,6 +90,7 @@ export const {
   savePaymentMethod,
   clearCartItems,
   savePhoneNumber,
+  loadCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

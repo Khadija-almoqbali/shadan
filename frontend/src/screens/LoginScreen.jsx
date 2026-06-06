@@ -6,7 +6,7 @@ import FormContainer from "../components/FormContainer"
 import Loader from "../components/Loader"
 import {useLoginMutation} from "../slices/usersApiSlice"
 import {setCredentials} from "../slices/authSlice"
-import {toast} from "react-toastify"
+import { loadCart } from "../slices/cartSlice";
 
 
 const LoginScreen = () => {
@@ -31,16 +31,42 @@ const LoginScreen = () => {
     }, [userInfo, redirect, navigate]);
 
     const submitHandler = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await login({ email, password }).unwrap();
-            dispatch(setCredentials({ ...res }));
-            navigate(redirect);
 
-        } catch (error) {
-            toast.error(error?.data?.message || error.message);
-        }
-    }
+  e.preventDefault();
+
+  try {
+
+    const res = await login({ email, password }).unwrap();
+
+    dispatch(setCredentials(res));
+
+    // 🔥 IMPORTANT: Reload cart for this user
+
+    const cartKey = `cart_${res._id}`;
+
+    const cartData = localStorage.getItem(cartKey)
+
+      ? JSON.parse(localStorage.getItem(cartKey))
+
+      : {
+
+          cartItems: [],
+
+          shippingAddress: {},
+
+          paymentMethod: "AmwalPay",
+
+        };
+
+    dispatch(loadCart(cartData)); // 👈 لازم نضيفها في cartSlice
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+
+};
 
   return (
     
