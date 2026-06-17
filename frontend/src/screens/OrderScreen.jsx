@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
+import { useTranslation } from "react-i18next";
 
 import {
   useGetOrderDetailsQuery,
@@ -21,9 +22,10 @@ import {
 import "../assets/styles/orderScreen.css";
 
 const OrderScreen = () => {
+  const { t } = useTranslation();
+
   const { id: orderId } = useParams();
 
-  // 👇 FIX: refetch مضاف
   const {
     data: order,
     isLoading,
@@ -34,11 +36,11 @@ const OrderScreen = () => {
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOrderMutation();
 
-  const { userInfo } = useSelector((state) => state.auth); // 👈 FIX
+  const { userInfo } = useSelector((state) => state.auth);
 
   const [loading, setLoading] = useState(false);
 
-  // 💳 Amwal Pay handler
+  // 💳 Pay
   const payHandler = async () => {
     try {
       setLoading(true);
@@ -59,26 +61,23 @@ const OrderScreen = () => {
     }
   };
 
-  // 🚚 deliver order
+  // 🚚 deliver
   const deliverOrderHandler = async () => {
     try {
       await deliverOrder(orderId).unwrap();
       toast.success("Order delivered");
-
-      refetch(); // 👈 refresh data
+      refetch();
     } catch (err) {
       toast.error(err?.data?.message || err.message);
     }
   };
 
-  // ⚠️ error handling
   useEffect(() => {
     if (error) {
       toast.error(error?.data?.message || "Failed to load order details");
     }
   }, [error]);
 
-  // ⏳ loading state
   if (isLoading || !order) {
     return <Loader />;
   }
@@ -86,32 +85,40 @@ const OrderScreen = () => {
   return (
     <div className="order-page">
       <div className="order-header">
-        <h1>Order Details</h1>
+        <h1>{t("order.title")}</h1>
         <span className="order-id">#{order._id}</span>
       </div>
 
       <Row className="g-4">
-        {/* LEFT SIDE */}
+
+        {/* LEFT */}
         <Col lg={8}>
           <ListGroup variant="flush" className="order-card">
 
             {/* SHIPPING */}
             <ListGroup.Item className="order-section">
-              <h2 className="section-title">Shipping</h2>
+              <h2 className="section-title">{t("order.shipping")}</h2>
 
               <div className="info-group">
                 <p>
-                  <span>Name</span>
+                  <span>{t("order.name")}</span>
                   {order?.user?.name}
                 </p>
 
                 <p>
-                  <span>Phone</span>
-                  +968 {order?.shippingAddress?.phoneNumber}
+                  <span>{t("order.phone")}</span>
+                  {order?.shippingAddress?.phoneNumber}
                 </p>
 
                 <p>
-                  <span>Address</span>
+                  <span>{t("order.deliveryType")}</span>
+                  {order?.shippingAddress?.deliveryType === "office"
+                    ? t("order.officePickup")
+                    : t("order.homeDelivery")}
+                </p>
+
+                <p>
+                  <span>{t("order.address")}</span>
                   {order?.shippingAddress?.address},{" "}
                   {order?.shippingAddress?.city},{" "}
                   {order?.shippingAddress?.country}
@@ -119,46 +126,43 @@ const OrderScreen = () => {
               </div>
 
               <div className="lux-status-box">
-
-                  {order.isDelivered ? (
-                    <div className="lux-status-success">
-                      Delivered on {order.deliveredAt?.substring(0, 10)}
-                    </div>
-                  ) : (
-                    <div className="lux-status-danger">
-                      Order has not been delivered yet
-                    </div>
-                  )}
-
-                </div>
+                {order.isDelivered ? (
+                  <div className="lux-status-success">
+                    {t("order.delivered")} {order.deliveredAt?.substring(0, 10)}
+                  </div>
+                ) : (
+                  <div className="lux-status-danger">
+                    {t("order.notDelivered")}
+                  </div>
+                )}
+              </div>
             </ListGroup.Item>
 
             {/* PAYMENT */}
             <ListGroup.Item className="order-section">
-              <h2 className="section-title">Payment</h2>
+              <h2 className="section-title">{t("order.payment")}</h2>
 
               <p>
-                <span>Method:</span> {order.paymentMethod}
+                <span>{t("order.paymentMethod")}:</span>{" "}
+                {order.paymentMethod}
               </p>
 
               <div className="lux-status-box">
-
                 {order.isPaid ? (
                   <div className="lux-status-success">
-                    Paid on {order.paidAt?.substring(0, 10)}
+                    {t("order.paidOn")} {order.paidAt?.substring(0, 10)}
                   </div>
                 ) : (
                   <div className="lux-status-danger">
-                    Payment is still pending
+                    {t("order.pendingPayment")}
                   </div>
                 )}
-
               </div>
             </ListGroup.Item>
 
             {/* ITEMS */}
             <ListGroup.Item className="order-section">
-              <h2 className="section-title">Order Items</h2>
+              <h2 className="section-title">{t("order.orderItems")}</h2>
 
               {order.orderItems.map((item, index) => (
                 <div className="product-item" key={index}>
@@ -195,45 +199,59 @@ const OrderScreen = () => {
           </ListGroup>
         </Col>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
         <Col lg={4}>
           <Card className="summary-card">
             <Card.Body>
-              <h2 className="summary-title">Order Summary</h2>
+              <h2 className="summary-title">{t("order.summary")}</h2>
 
               <div className="summary-row">
-                <span>Items</span>
+                <span>{t("order.items")}</span>
                 <strong>{order.itemsPrice} OMR</strong>
               </div>
 
               <div className="summary-row">
-                <span>Shipping</span>
+                <span>{t("order.shippingCost")}</span>
                 <strong>{order.shippingPrice} OMR</strong>
               </div>
 
               <div className="summary-row">
-                <span>Tax</span>
+                <span>{t("order.tax")}</span>
                 <strong>{order.taxPrice} OMR</strong>
               </div>
 
+              {order.couponCode && (
+                <div className="summary-row">
+                  <span>{t("order.couponCode")}</span>
+                  <strong>{order.couponCode}</strong>
+                </div>
+              )}
+
+              {order.discount > 0 && (
+                <div className="summary-row">
+                  <span>{t("order.discount")}</span>
+                  <strong>
+                    -{Math.min(order.discount, order.itemsPrice).toFixed(2)} OMR
+                  </strong>
+                </div>
+              )}
+
               <div className="summary-row total-row">
-                <span>Total</span>
+                <span>{t("order.total")}</span>
                 <strong>{order.totalPrice} OMR</strong>
               </div>
             </Card.Body>
 
-            {/* PAY BUTTON */}
             {!order.isPaid && userInfo && !userInfo.isAdmin && (
               <Button
                 className="btn btn-primary w-100 my-3"
                 onClick={payHandler}
                 disabled={loading}
               >
-                {loading ? "Redirecting..." : "Pay Now"}
+                {loading ? t("order.redirecting") : t("order.payNow")}
               </Button>
             )}
 
-            {/* ADMIN DELIVER */}
             {userInfo &&
               userInfo.isAdmin &&
               order.isPaid &&
@@ -245,8 +263,8 @@ const OrderScreen = () => {
                     disabled={loadingDeliver}
                   >
                     {loadingDeliver
-                      ? "Updating..."
-                      : "Mark As Delivered"}
+                      ? t("order.updating")
+                      : t("order.markDelivered")}
                   </Button>
                 </ListGroup.Item>
               )}

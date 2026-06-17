@@ -268,7 +268,7 @@
 
 
 .summary-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 16px;
   border: 1px solid #f1e7dc;
   padding: 20px;
@@ -288,6 +288,41 @@
   padding: 10px 0;
   flex-wrap: wrap;
   text-align: center;
+}
+
+.delivery-options {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.delivery-card {
+  flex: 1;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background: #3506064f;
+}
+
+.delivery-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.delivery-card:hover {
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.delivery-card.active {
+  border-color: #5A2E27;
+  background: #ffffff2a;
 }
 
 @media (max-width: 768px) {

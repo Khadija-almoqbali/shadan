@@ -1,158 +1,114 @@
-import { useState , useEffect} from "react"
-import {Link, useLocation, useNavigate} from "react-router-dom"
-import {useDispatch, useSelector} from "react-redux"
-import {Form, Button, Row, Col} from "react-bootstrap"
-import FormContainer from "../components/FormContainer"
-import Loader from "../components/Loader"
-import {useLoginMutation} from "../slices/usersApiSlice"
-import {setCredentials} from "../slices/authSlice"
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Form, Button, Row, Col } from "react-bootstrap";
+import FormContainer from "../components/FormContainer";
+import Loader from "../components/Loader";
+import { useLoginMutation } from "../slices/usersApiSlice";
+import { setCredentials } from "../slices/authSlice";
 import { loadCart } from "../slices/cartSlice";
-
+import { useTranslation } from "react-i18next";
 
 const LoginScreen = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const { t } = useTranslation();
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [login , {isLoading}] = useLoginMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const {userInfo} = useSelector((state) => state.auth);
+  const [login, { isLoading }] = useLoginMutation();
 
-    const {search} = useLocation();
-    const sp = new URLSearchParams(search);
-    const redirect = sp.get("redirect") || "/";
+  const { userInfo } = useSelector((state) => state.auth);
 
-    useEffect(() => {
-        if (userInfo) {
-            navigate(redirect);
-        }
-    }, [userInfo, redirect, navigate]);
+  const { search } = useLocation();
+  const sp = new URLSearchParams(search);
+  const redirect = sp.get("redirect") || "/";
 
-    const submitHandler = async (e) => {
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [userInfo, redirect, navigate]);
 
-  e.preventDefault();
+  const submitHandler = async (e) => {
+    e.preventDefault();
 
-  try {
+    try {
+      const res = await login({ email, password }).unwrap();
 
-    const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials(res));
 
-    dispatch(setCredentials(res));
+      const cartKey = `cart_${res._id}`;
 
-    // 🔥 IMPORTANT: Reload cart for this user
+      const cartData = localStorage.getItem(cartKey)
+        ? JSON.parse(localStorage.getItem(cartKey))
+        : {
+            cartItems: [],
+            shippingAddress: {},
+            paymentMethod: "AmwalPay",
+          };
 
-    const cartKey = `cart_${res._id}`;
-
-    const cartData = localStorage.getItem(cartKey)
-
-      ? JSON.parse(localStorage.getItem(cartKey))
-
-      : {
-
-          cartItems: [],
-
-          shippingAddress: {},
-
-          paymentMethod: "AmwalPay",
-
-        };
-
-    dispatch(loadCart(cartData)); // 👈 لازم نضيفها في cartSlice
-
-  } catch (err) {
-
-    console.log(err);
-
-  }
-
-};
+      dispatch(loadCart(cartData));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
-    
-   <FormContainer>
-  <div className="text-center mb-4">
-    <h1 style={{ fontWeight: "600", letterSpacing: "1px" }}>
-      Login
-    </h1>
-    <p style={{ color: "#888" }}>
-      Login to continue your luxury experience
-    </p>
-  </div>
+    <FormContainer>
+      <div className="text-center mb-4">
+        <h1 style={{ fontWeight: "600", letterSpacing: "1px" }}>
+          {t("login.title")}
+        </h1>
 
-  <Form onSubmit={submitHandler}>
-    <Form.Group controlId="email" className="my-3">
-      <Form.Label style={{ fontWeight: "500" }}>
-        Email Address
-      </Form.Label>
-      <Form.Control
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={{
-          borderRadius: "10px",
-          padding: "12px",
-          border: "1px solid #ddd",
-        }}
-      />
-    </Form.Group>
+        <p style={{ color: "#888" }}>
+          {t("login.subtitle")}
+        </p>
+      </div>
 
-    <Form.Group controlId="password" className="my-3">
-      <Form.Label style={{ fontWeight: "500" }}>
-        Password
-      </Form.Label>
-      <Form.Control
-        type="password"
-        placeholder="Enter your password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{
-          borderRadius: "10px",
-          padding: "12px",
-          border: "1px solid #ddd",
-        }}
-      />
-    </Form.Group>
+      <Form onSubmit={submitHandler}>
+        <Form.Group controlId="email" className="my-3">
+          <Form.Label>{t("login.emailLabel")}</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder={t("login.emailPlaceholder")}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
 
-    <Button
-      type="submit"
-      style={{
-        width: "100%",
-        backgroundColor: "#2F5D62",
-        border: "none",
-        padding: "12px",
-        borderRadius: "10px",
-        fontWeight: "500",
-        letterSpacing: "1px",
-      }}
-      disabled={isLoading}
-    >
-      Sign In
-    </Button>
-    {isLoading && <Loader />}
-  </Form>
+        <Form.Group controlId="password" className="my-3">
+          <Form.Label>{t("login.passwordLabel")}</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder={t("login.passwordPlaceholder")}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
 
-  <Row className="py-3 text-center">
-    <Col>
-      <span style={{ color: "#666" }}>
-        New Customer?{" "}
-      </span>
-      <Link
-        to={redirect ? `/register?redirect=${redirect}` : "/register"}
-        style={{
-          color: "#240803ff",
-          fontWeight: "600",
-          textDecoration: "none",
-        }}
-      >
-        Create Account
-      </Link>
-    </Col>
-  </Row>
-</FormContainer>
-   
-  )
-}
+        <Button type="submit" disabled={isLoading} style={{ width: "100%" }}>
+          {isLoading ? t("login.loading") : t("login.signin")}
+        </Button>
+
+        {isLoading && <Loader />}
+      </Form>
+
+      <Row className="py-3 text-center">
+        <Col>
+          <span>{t("login.newCustomer")} </span>
+
+          <Link
+            to={redirect ? `/register?redirect=${redirect}` : "/register"}
+          >
+            {t("login.createAccount")}
+          </Link>
+        </Col>
+      </Row>
+    </FormContainer>
+  );
+};
 
 export default LoginScreen;

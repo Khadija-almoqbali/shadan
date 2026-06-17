@@ -1,8 +1,24 @@
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
+import { useTranslation } from 'react-i18next';
 
 const Product = ({ product }) => {
+  const { i18n } = useTranslation();
+
+  // 🔥 helper: chooses language dynamically
+  const getText = (field) => {
+    if (!field) return "";
+
+    // if plain string
+    if (typeof field === "string") return field;
+
+    // dynamic language support
+    const lang = i18n.language;
+
+    return field?.[lang] || field?.en || field?.ar || "";
+  };
+
   return (
     <Card
       style={{
@@ -16,7 +32,7 @@ const Product = ({ product }) => {
       <Link to={`/product/${product._id}`}>
         <img
           src={product.image}
-          alt={product.name}
+          alt={getText(product.name)}
           style={{
             width: '100%',
             aspectRatio: '1 / 1',
@@ -28,7 +44,11 @@ const Product = ({ product }) => {
 
       <Card.Body className="p-3">
         <Link to={`/product/${product._id}`} className="product-title">
-          <h5 className="mb-2 fw-bold">{product.name}</h5>
+
+          <h5 className="mb-2 fw-bold">
+            {getText(product.name)}
+          </h5>
+
         </Link>
 
         <Card.Text as="div">

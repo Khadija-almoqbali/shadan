@@ -4,24 +4,30 @@ import { Form, Button } from "react-bootstrap";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
 import {
   useUpdateProductMutation,
   useGetProductDetailsQuery,
-  useUploadProductImageMutation
+  useUploadProductImageMutation,
 } from "../../slices/productsApiSclice";
 
 import "../../assets/styles/productEditLuxury.css";
 
 const ProductEditScreen = () => {
-  const { id: productId } = useParams();
+  const { t } = useTranslation();
 
-  const [name, setName] = useState("");
+  const { id: productId } = useParams();
+  const navigate = useNavigate();
+
+  const [name, setName] = useState({ en: "", ar: "" });
+  const [description, setDescription] = useState({ en: "", ar: "" });
+  const [brand, setBrand] = useState({ en: "", ar: "" });
+  const [category, setCategory] = useState({ en: "", ar: "" });
+
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
-  const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
-  const [description, setDescription] = useState("");
 
   const { data: product, isLoading, error } =
     useGetProductDetailsQuery(productId);
@@ -32,19 +38,35 @@ const ProductEditScreen = () => {
   const [uploadProductImage, { isLoading: loadingUpload }] =
     useUploadProductImageMutation();
 
- 
-
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (product) {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setBrand(product.brand);
-      setCategory(product.category);
-      setCountInStock(product.countInStock);
-      setDescription(product.description);
+      setName(
+        typeof product.name === "object"
+          ? product.name
+          : { en: product.name || "", ar: product.name || "" }
+      );
+
+      setDescription(
+        typeof product.description === "object"
+          ? product.description
+          : { en: product.description || "", ar: product.description || "" }
+      );
+
+      setBrand(
+        typeof product.brand === "object"
+          ? product.brand
+          : { en: product.brand || "", ar: product.brand || "" }
+      );
+
+      setCategory(
+        typeof product.category === "object"
+          ? product.category
+          : { en: product.category || "", ar: product.category || "" }
+      );
+
+      setPrice(product.price || 0);
+      setImage(product.image || "");
+      setCountInStock(product.countInStock || 0);
     }
   }, [product]);
 
@@ -53,20 +75,35 @@ const ProductEditScreen = () => {
 
     const updatedProduct = {
       _id: productId,
-      name,
+
+      name: {
+        en: name.en || "",
+        ar: name.ar || name.en || "",
+      },
+
+      description: {
+        en: description.en || "",
+        ar: description.ar || description.en || "",
+      },
+
+      brand: {
+        en: brand.en || "",
+        ar: brand.ar || brand.en || "",
+      },
+
+      category: {
+        en: category.en || "",
+        ar: category.ar || category.en || "",
+      },
+
       price,
       image,
-      brand,
-      category,
       countInStock,
-      description,
     };
 
     try {
       await updateProduct(updatedProduct).unwrap();
-
-      toast.success("Product updated");
-
+      toast.success(t("adminProductEdit.updatedSuccess"));
       navigate("/admin/productlist");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -91,51 +128,65 @@ const ProductEditScreen = () => {
       <div className="lux-edit-card">
 
         <Link to="/admin/productlist" className="btn btn-light mb-3">
-          Go Back
+          {t("ui.goBack")}
         </Link>
 
-        <h1 className="lux-title">Edit Product</h1>
+        <h1 className="lux-title">{t("adminProductEdit.title")}</h1>
 
         {loadingUpdate && <Loader />}
+
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="danger">{error}</Message>
+          <Message variant="danger">
+            {error?.data?.message || error.error}
+          </Message>
         ) : (
           <Form onSubmit={submitHandler}>
 
-            {/* NAME */}
-            <Form.Group controlId="name" className="mb-3">
-              <Form.Label className="lux-label">Name</Form.Label>
+            {/* NAME EN */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.nameEn")}</Form.Label>
               <Form.Control
                 className="lux-input"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={name.en}
+                onChange={(e) =>
+                  setName({ ...name, en: e.target.value })
+                }
+              />
+            </Form.Group>
+
+            {/* NAME AR */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.nameAr")}</Form.Label>
+              <Form.Control
+                className="lux-input"
+                value={name.ar}
+                onChange={(e) =>
+                  setName({ ...name, ar: e.target.value })
+                }
               />
             </Form.Group>
 
             {/* PRICE */}
-            <Form.Group controlId="price" className="mb-3">
-              <Form.Label className="lux-label">Price</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.price")}</Form.Label>
               <Form.Control
-                className="lux-input"
                 type="number"
+                className="lux-input"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </Form.Group>
 
             {/* IMAGE */}
-            <Form.Group controlId="image" className="mb-3">
-              <Form.Label className="lux-label">Image</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.image")}</Form.Label>
 
               <Form.Control
                 className="lux-input"
-                type="text"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-                placeholder="Image URL"
               />
 
               <Form.Control
@@ -143,6 +194,7 @@ const ProductEditScreen = () => {
                 type="file"
                 onChange={uploadFileHandler}
               />
+
               {loadingUpload && <Loader />}
 
               {image && (
@@ -154,53 +206,93 @@ const ProductEditScreen = () => {
               )}
             </Form.Group>
 
-            {/* BRAND */}
-            <Form.Group controlId="brand" className="mb-3">
-              <Form.Label className="lux-label">Brand</Form.Label>
+            {/* BRAND EN */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.brandEn")}</Form.Label>
               <Form.Control
                 className="lux-input"
-                type="text"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
+                value={brand.en}
+                onChange={(e) =>
+                  setBrand({ ...brand, en: e.target.value })
+                }
+              />
+            </Form.Group>
+
+            {/* BRAND AR */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.brandAr")}</Form.Label>
+              <Form.Control
+                className="lux-input"
+                value={brand.ar}
+                onChange={(e) =>
+                  setBrand({ ...brand, ar: e.target.value })
+                }
+              />
+            </Form.Group>
+
+            {/* CATEGORY EN */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.categoryEn")}</Form.Label>
+              <Form.Control
+                className="lux-input"
+                value={category.en}
+                onChange={(e) =>
+                  setCategory({ ...category, en: e.target.value })
+                }
+              />
+            </Form.Group>
+
+            {/* CATEGORY AR */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.categoryAr")}</Form.Label>
+              <Form.Control
+                className="lux-input"
+                value={category.ar}
+                onChange={(e) =>
+                  setCategory({ ...category, ar: e.target.value })
+                }
+              />
+            </Form.Group>
+
+            {/* DESCRIPTION EN */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.descriptionEn")}</Form.Label>
+              <Form.Control
+                as="textarea"
+                className="lux-input"
+                value={description.en}
+                onChange={(e) =>
+                  setDescription({ ...description, en: e.target.value })
+                }
+              />
+            </Form.Group>
+
+            {/* DESCRIPTION AR */}
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.descriptionAr")}</Form.Label>
+              <Form.Control
+                as="textarea"
+                className="lux-input"
+                value={description.ar}
+                onChange={(e) =>
+                  setDescription({ ...description, ar: e.target.value })
+                }
               />
             </Form.Group>
 
             {/* STOCK */}
-            <Form.Group controlId="countInStock" className="mb-3">
-              <Form.Label className="lux-label">Stock</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>{t("adminProductEdit.stock")}</Form.Label>
               <Form.Control
-                className="lux-input"
                 type="number"
+                className="lux-input"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
               />
             </Form.Group>
 
-            {/* CATEGORY */}
-            <Form.Group controlId="category" className="mb-3">
-              <Form.Label className="lux-label">Category</Form.Label>
-              <Form.Control
-                className="lux-input"
-                type="text"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              />
-            </Form.Group>
-
-            {/* DESCRIPTION */}
-            <Form.Group controlId="description" className="mb-3">
-              <Form.Label className="lux-label">Description</Form.Label>
-              <Form.Control
-                className="lux-input"
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </Form.Group>
-
-            {/* BUTTON */}
-            <Button type="submit" className="lux-btn">
-              Update Product
+            <Button className="lux-btn" type="submit">
+              {t("adminProductEdit.updateBtn")}
             </Button>
 
           </Form>

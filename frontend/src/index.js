@@ -1,4 +1,5 @@
 import React from 'react';
+import "./i18n";
 import ReactDOM from 'react-dom/client';
 import { 
   createBrowserRouter,
@@ -33,6 +34,8 @@ import ProductListScreen from './screens/admin/ProductListScreen';
 import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
+import CouponsScreen from './screens/admin/CouponsScreen';
+import OrdersAnalyticsScreen from './screens/admin/OrdersAnalyticsScreen';
 
 
 const router = createBrowserRouter(
@@ -60,6 +63,8 @@ const router = createBrowserRouter(
       <Route path="admin/product/:id/edit" element={<ProductEditScreen />} />
       <Route path="admin/userlist" element={<UserListScreen />} />
       <Route path="admin/user/:id/edit" element={<UserEditScreen />} />
+      <Route path="admin/coupons" element={<CouponsScreen />} />
+      <Route path="admin/dashboard" element={<OrdersAnalyticsScreen />} />
     </Route>
   </Route>
   )

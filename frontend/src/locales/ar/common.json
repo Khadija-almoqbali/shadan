@@ -1,0 +1,565 @@
+{
+  "cartTitle": "سلة المشتريات",
+  "cartSubtitle": "قطع المجوهرات التي اخترتها",
+
+  "cartEmpty": "السلة فارغة",
+  "goBack": "العودة للمتجر",
+
+  "orderSummary": "ملخص الطلب",
+
+  "items": "عدد العناصر",
+  "subtotal": "المجموع",
+  "discount": "الخصم",
+  "total": "الإجمالي",
+
+  "couponPlaceholder": "أدخل كود الخصم",
+  "applyCoupon": "تطبيق الكوبون",
+  "applying": "جاري التطبيق...",
+
+  "checkout": "إتمام الشراء",
+
+  "qty": "الكمية",
+
+  "couponSuccess": "تم تطبيق الكوبون بنجاح!",
+  "couponInvalid": "كود الخصم غير صحيح",
+
+  "signin": "تسجيل الدخول",
+  "logout": "تسجيل خروج",
+  "profile": "الملف الشخصي",
+
+  "cart": {
+    "title": "السلة"
+  },
+
+  "admin": {
+    "title": "لوحة التحكم",
+    "products": "المنتجات",
+    "users": "المستخدمين",
+    "orders": "الطلبات",
+    "coupons": "الكوبونات",
+    "dashboard": "لوحة الإحصائيات"
+  },
+
+  "hero": {
+    "newArrivals": "وصل حديثاً",
+    "title": "صُنع بشغف",
+    "subtitle": "استكشف أحدث مجموعاتنا",
+    "shopNow": "تسوق الآن"
+  },
+  "home": {
+
+    "subtitle": "أناقة خالدة",
+
+    "title": "مجموعة مختارة",
+
+    "description": "اكتشفي مجموعة مختارة بعناية من الإكسسوارات التي تضيف لمسة من الأناقة والرقي والجمال الخالد لكل إطلالة.",
+
+    "searchPlaceholder": "ابحث في المجموعة",
+
+    "noItems": "لا توجد منتجات",
+
+    "trySearch": "حاولي البحث عن قطعة أخرى."
+
+  },
+  "login": {
+
+    "title": "تسجيل الدخول",
+
+    "subtitle": "سجل دخولك لمتابعة تجربة التسوق الفاخرة",
+
+    "emailLabel": "البريد الإلكتروني",
+
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+
+    "passwordLabel": "كلمة المرور",
+
+    "passwordPlaceholder": "أدخل كلمة المرور",
+
+    "signin": "دخول",
+
+    "loading": "جاري تسجيل الدخول...",
+
+    "newCustomer": "عميل جديد؟",
+
+    "createAccount": "إنشاء حساب"
+
+  },
+
+  "register": {
+
+    "title": "إنشاء حساب",
+
+    "subtitle": "أنشئ حسابك لمتابعة تجربة التسوق الفاخرة",
+
+    "nameLabel": "الاسم",
+
+    "namePlaceholder": "أدخل اسمك",
+
+    "emailLabel": "البريد الإلكتروني",
+
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+
+    "passwordLabel": "كلمة المرور",
+
+    "passwordPlaceholder": "أدخل كلمة المرور",
+
+    "confirmPasswordLabel": "تأكيد كلمة المرور",
+
+    "confirmPasswordPlaceholder": "أكد كلمة المرور",
+
+    "button": "تسجيل",
+
+    "loading": "جاري إنشاء الحساب...",
+
+    "alreadyAccount": "لديك حساب بالفعل؟",
+
+    "login": "تسجيل الدخول",
+
+    "passwordMismatch": "كلمات المرور غير متطابقة"
+
+  },
+  "order": {
+
+    "title": "تفاصيل الطلب",
+
+    "shipping": "الشحن",
+
+    "payment": "الدفع",
+
+    "orderItems": "المنتجات",
+
+    "summary": "ملخص الطلب",
+
+    "name": "الاسم",
+
+    "phone": "رقم الهاتف",
+
+    "deliveryType": "نوع التوصيل",
+
+    "address": "العنوان",
+
+    "homeDelivery": "🏠 توصيل للمنزل",
+
+    "officePickup": "🏢 استلام من المكتب",
+
+    "delivered": "تم التوصيل بتاريخ",
+
+    "notDelivered": "لم يتم توصيل الطلب بعد",
+
+    "paymentMethod": "طريقة الدفع",
+
+    "paidOn": "تم الدفع بتاريخ",
+
+    "pendingPayment": "الدفع قيد الانتظار",
+
+    "items": "العناصر",
+
+    "shippingCost": "الشحن",
+
+    "tax": "الضريبة",
+
+    "couponCode": "كود الخصم",
+
+    "discount": "الخصم",
+
+    "total": "الإجمالي",
+
+    "payNow": "ادفع الآن",
+
+    "redirecting": "جاري التحويل...",
+
+    "markDelivered": "تحديد كمُسلم",
+
+    "updating": "جاري التحديث..."
+
+  },
+  "paymentCancel": {
+
+    "title": "فشل الدفع",
+
+    "description": "حدث خطأ أو تم إلغاء عملية الدفع. يرجى المحاولة مرة أخرى.",
+
+    "tryAgain": "إعادة المحاولة",
+
+    "backHome": "العودة للرئيسية"
+
+  },
+  "payment": {
+
+    "title": "طريقة الدفع",
+
+    "selectMethod": "اختر طريقة الدفع",
+
+    "amwalPay": "أموال باي (بطاقات / Apple Pay)",
+
+    "continue": "متابعة"
+
+  },
+  "shipping": {
+
+    "title": "تفاصيل الشحن",
+
+    "subtitle": "يرجى إدخال معلومات التوصيل",
+
+    "addressLabel": "العنوان",
+
+    "addressPlaceholder": "شارع 123، اسم المبنى",
+
+    "cityLabel": "المدينة",
+
+    "cityPlaceholder": "مسقط",
+
+    "codeLabel": "الرمز",
+
+    "phoneLabel": "رقم الهاتف",
+
+    "phonePlaceholder": "أدخل رقم الهاتف",
+
+    "countryLabel": "الدولة",
+
+    "countryPlaceholder": "عمان",
+
+    "deliveryTitle": "نوع التوصيل",
+
+    "homeDelivery": "توصيل منزلي",
+
+    "officePickup": "استلام من المكتب",
+
+    "continue": "متابعة",
+
+    "error": "يرجى تعبئة جميع بيانات الشحن قبل المتابعة"
+
+  },
+  "placeOrder": {
+
+    "deliveryType": "نوع التوصيل",
+
+    "home": "🏠 توصيل منزلي",
+
+    "office": "🏢 استلام من المكتب",
+
+    "address": "العنوان",
+
+    "phone": "رقم الهاتف",
+
+    "payment": "طريقة الدفع",
+
+    "method": "الطريقة",
+
+    "itemsTitle": "المنتجات",
+
+    "emptyCart": "السلة فارغة",
+
+    "noPhone": "لا يوجد رقم هاتف",
+
+    "summary": "ملخص الطلب",
+
+    "items": "العناصر",
+
+    "coupon": "كود الخصم",
+
+    "discount": "الخصم",
+
+    "shipping": "الشحن",
+
+    "total": "الإجمالي",
+
+    "button": "إتمام الطلب",
+
+    "error": "حدث خطأ ما"
+
+  },
+  "paymentSuccess": {
+
+    "title": "تم الدفع بنجاح",
+
+    "description": "شكراً لك! تم إتمام عملية الدفع بنجاح. يتم الآن معالجة طلبك.",
+
+    "viewOrders": "عرض طلباتي",
+
+    "backHome": "العودة للرئيسية"
+
+  },
+  "product": {
+
+
+    "description": "الوصف",
+
+    "submit": "إرسال",
+
+    "back": "← الرجوع",
+
+    "price": "السعر",
+
+    "status": "الحالة",
+
+    "qty": "الكمية",
+
+    "addToCart": "إضافة إلى السلة",
+
+    "reviews": "التقييمات",
+
+    "noReviews": "لا توجد تقييمات",
+
+    "writeReview": "اكتب تقييم للمنتج",
+
+    "rating": "التقييم",
+
+    "comment": "التعليق",
+
+    "select": "اختر...",
+
+    "poor": "ضعيف",
+
+    "fair": "مقبول",
+
+    "good": "جيد",
+
+    "veryGood": "جيد جداً",
+
+    "excellent": "ممتاز",
+
+    "loginMessage": "الرجاء",
+
+    "login": "تسجيل الدخول"
+
+  },
+  "profilePage": {
+
+    "section": "بيانات الحساب",
+
+    "ordersTitle": "طلباتي",
+
+    "name": "الاسم",
+
+    "email": "البريد الإلكتروني",
+
+    "password": "كلمة المرور",
+
+    "confirmPassword": "تأكيد كلمة المرور",
+
+    "updateBtn": "تحديث الملف",
+
+    "id": "الرقم",
+
+    "date": "التاريخ",
+
+    "total": "المجموع",
+
+    "paid": "مدفوع",
+
+    "delivered": "تم التوصيل",
+
+    "details": "تفاصيل",
+
+    "passwordMismatch": "كلمات المرور غير متطابقة",
+
+    "updatedSuccess": "تم تحديث الملف بنجاح"
+
+  },
+  "coupons": {
+
+    "title": "إدارة الكوبونات",
+
+    "subtitle": "إنشاء وإدارة كوبونات الخصم",
+
+    "code": "كود الكوبون",
+
+    "percentage": "نسبة مئوية %",
+
+    "fixed": "مبلغ ثابت",
+
+    "value": "قيمة الخصم",
+
+    "minPurchase": "الحد الأدنى للشراء",
+
+    "add": "إضافة كوبون",
+
+    "active": "مفعل",
+
+    "disabled": "غير مفعل",
+
+    "delete": "حذف",
+
+    "table": {
+
+      "code": "الكود",
+
+      "type": "النوع",
+
+      "value": "القيمة",
+
+      "min": "الحد الأدنى",
+
+      "status": "الحالة",
+
+      "action": "الإجراء"
+
+    }
+
+  },
+  "orders": {
+
+    "title": "الطلبات",
+
+    "subtitle": "إدارة وتصدير جميع الطلبات",
+
+    "search": "ابحث بالرقم أو المستخدم...",
+
+    "generatePdf": "إنشاء الفواتير (PDF)",
+
+    "totalOrders": "إجمالي الطلبات",
+
+    "paidOrders": "الطلبات المدفوعة",
+
+    "selected": "المحددة للفواتير",
+
+    "invoice": "فاتورة",
+
+    "name": "الاسم",
+
+    "phone": "رقم الهاتف",
+
+    "address": "العنوان",
+
+    "city": "المدينة",
+
+    "country": "الدولة",
+
+    "deliveryType": "نوع التوصيل",
+
+    "officePickup": "استلام من المكتب",
+
+    "homeDelivery": "توصيل للمنزل",
+
+    "orderId": "رقم الطلب",
+
+    "date": "التاريخ",
+
+    "product": "المنتج",
+
+    "qty": "الكمية",
+
+    "price": "السعر",
+
+    "total": "الإجمالي",
+
+    "thanks": "شكراً لطلبك :)",
+
+    "select": "تحديد",
+
+    "id": "الرقم",
+
+    "user": "المستخدم",
+
+    "coupon": "الكوبون",
+
+    "discount": "الخصم",
+
+    "paid": "مدفوع",
+
+    "delivered": "تم التوصيل",
+
+    "delivery": "التوصيل",
+
+    "details": "تفاصيل",
+
+    "detailsBtn": "تفاصيل",
+
+    "office": "مكتب",
+
+    "home": "منزل"
+
+  },
+"adminProductEdit": {
+  "title": "تعديل المنتج",
+  "nameEn": "الاسم (إنجليزي)",
+  "nameAr": "الاسم (عربي)",
+  "price": "السعر",
+  "image": "الصورة",
+  "brandEn": "العلامة التجارية (إنجليزي)",
+  "brandAr": "العلامة التجارية (عربي)",
+  "categoryEn": "الفئة (إنجليزي)",
+  "categoryAr": "الفئة (عربي)",
+  "descriptionEn": "الوصف (إنجليزي)",
+  "descriptionAr": "الوصف (عربي)",
+  "stock": "المخزون",
+  "updateBtn": "تحديث المنتج",
+  "updatedSuccess": "تم تحديث المنتج بنجاح"
+},
+
+  "ui": {
+
+    "goBack": "رجوع"
+
+  },
+  "productList": {
+
+    "title": "إدارة المنتجات",
+
+    "subtitle": "إدارة ومتابعة المنتجات في المتجر",
+
+    "search": "ابحث عن المنتجات...",
+
+    "create": "إنشاء منتج",
+
+    "total": "إجمالي المنتجات",
+
+    "categories": "الفئات",
+
+    "brands": "العلامات التجارية",
+
+    "emptyTitle": "لا توجد منتجات",
+
+    "emptyDesc": "حاول البحث بكلمة أخرى",
+
+    "id": "الرقم",
+
+    "name": "الاسم",
+
+    "price": "السعر",
+
+    "category": "الفئة",
+
+    "brand": "العلامة",
+
+    "actions": "الإجراءات",
+
+    "confirmDelete": "هل أنت متأكد من حذف المنتج؟",
+
+    "confirmCreate": "هل تريد إنشاء منتج جديد؟",
+
+    "deleted": "تم حذف المنتج",
+
+    "created": "تم إنشاء المنتج"
+
+  },
+  "userEdit": {
+  "title": "تعديل المستخدم",
+  "fullName": "الاسم الكامل",
+  "email": "البريد الإلكتروني",
+  "adminAccess": "صلاحيات المدير",
+  "updateBtn": "تحديث المستخدم",
+  "updatedSuccess": "تم تحديث المستخدم بنجاح",
+  "namePlaceholder": "أدخل الاسم الكامل",
+  "emailPlaceholder": "أدخل البريد الإلكتروني",
+  "back": "رجوع"
+},
+"userList": {
+  "title": "إدارة المستخدمين",
+  "subtitle": "إدارة ومتابعة جميع المستخدمين المسجلين",
+  "search": "ابحث عن مستخدم...",
+  "total": "إجمالي المستخدمين",
+  "admins": "المديرين",
+  "id": "المعرف",
+  "name": "الاسم",
+  "phone": "الهاتف",
+  "email": "البريد الإلكتروني",
+  "role": "الدور",
+  "admin": "مدير",
+  "user": "مستخدم",
+  "confirmDelete": "هل أنت متأكد من حذف هذا المستخدم؟",
+  "deleted": "تم حذف المستخدم بنجاح"
+}
+
+}

@@ -1,21 +1,11 @@
 import { useState } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import {
-  Table,
-  Button,
-  Form,
-} from 'react-bootstrap';
+import { Table, Button, Form } from 'react-bootstrap';
 
-import {
-  FaEdit,
-  FaTrash,
-  FaPlus,
-  FaBoxOpen,
-} from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus, FaBoxOpen } from 'react-icons/fa';
 
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
-
 import { toast } from 'react-toastify';
 
 import {
@@ -25,8 +15,11 @@ import {
 } from '../../slices/productsApiSclice';
 
 import '../../assets/styles/orderListProductAdmin.css';
+import { useTranslation } from 'react-i18next';
 
 const ProductListScreen = () => {
+  const { t, i18n } = useTranslation();
+
   const {
     data: products,
     isLoading,
@@ -42,140 +35,105 @@ const ProductListScreen = () => {
   const [deleteProduct, { isLoading: loadingDelete }] =
     useDeleteProductMutation();
 
+  // ✅ multilingual helper (FIXED)
+  const getText = (field) => {
+    if (!field) return '';
+
+    const lang = i18n.language; // ar / en
+
+    if (typeof field === 'string') return field;
+
+    return field?.[lang] || field?.en || field?.ar || '';
+  };
+
   const deleteHandler = async (id) => {
-    if (window.confirm('Are you sure?')) {
+    if (window.confirm(t('productList.confirmDelete'))) {
       try {
         await deleteProduct(id);
-
-        toast.success('Product Deleted');
-
+        toast.success(t('productList.deleted'));
         refetch();
       } catch (err) {
-        toast.error(
-          err?.data?.message || err.error
-        );
+        toast.error(err?.data?.message || err.error);
       }
     }
   };
 
   const createProductHandler = async () => {
-    if (
-      window.confirm(
-        'Are you sure you want to create new product?'
-      )
-    ) {
+    if (window.confirm(t('productList.confirmCreate'))) {
       try {
         await createProduct();
-
+        toast.success(t('productList.created'));
         refetch();
-
-        toast.success('Product Created');
       } catch (err) {
-        toast.error(
-          err?.data?.message || err.error
-        );
+        toast.error(err?.data?.message || err.error);
       }
     }
   };
 
-  const filteredProducts = products?.filter(
-    (product) =>
-      product.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase()) ||
-      product.category
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase()) ||
-      product.brand
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-  );
+  const filteredProducts = products?.filter((product) => {
+    const name = getText(product.name).toLowerCase();
+    const category = getText(product.category).toLowerCase();
+    const brand = getText(product.brand).toLowerCase();
+
+    const keyword = searchTerm.toLowerCase();
+
+    return (
+      name.includes(keyword) ||
+      category.includes(keyword) ||
+      brand.includes(keyword)
+    );
+  });
 
   return (
     <>
       {/* HEADER */}
       <div className="lux-page-header">
         <div>
-          <h1 className="lux-title">
-            Products Management
-          </h1>
-
-          <p className="lux-subtitle">
-            Manage and monitor store products
-          </p>
+          <h1 className="lux-title">{t('productList.title')}</h1>
+          <p className="lux-subtitle">{t('productList.subtitle')}</p>
         </div>
 
         <div className="lux-page-header-right">
-          {/* SEARCH */}
           <div className="lux-search">
             <Form.Control
               type="text"
-              placeholder="Search products..."
+              placeholder={t('productList.search')}
               value={searchTerm}
-              onChange={(e) =>
-                setSearchTerm(e.target.value)
-              }
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
-          {/* CREATE BUTTON */}
-          <Button
-            className="lux-create-btn"
-            onClick={createProductHandler}
-          >
+          <Button className="lux-create-btn" onClick={createProductHandler}>
             <FaPlus />
-            Create Product
+            {t('productList.create')}
           </Button>
         </div>
       </div>
 
       {/* STATS */}
-{!isLoading && products && (
-  <div className="lux-stats-row">
-    <div className="lux-stat-card">
-      <span className="lux-stat-number">
-        {products.length}
-      </span>
+      {!isLoading && products && (
+        <div className="lux-stats-row">
+          <div className="lux-stat-card">
+            <span className="lux-stat-number">{products.length}</span>
+            <span className="lux-stat-label">{t('productList.total')}</span>
+          </div>
 
-      <span className="lux-stat-label">
-        Total Products
-      </span>
-    </div>
+          <div className="lux-stat-card">
+            <span className="lux-stat-number">
+              {[...new Set(products.map((p) => getText(p.category)))].length}
+            </span>
+            <span className="lux-stat-label">{t('productList.categories')}</span>
+          </div>
 
-    <div className="lux-stat-card">
-      <span className="lux-stat-number">
-        {
-          [
-            ...new Set(
-              products.map((p) => p.category)
-            ),
-          ].length
-        }
-      </span>
+          <div className="lux-stat-card">
+            <span className="lux-stat-number">
+              {[...new Set(products.map((p) => getText(p.brand)))].length}
+            </span>
+            <span className="lux-stat-label">{t('productList.brands')}</span>
+          </div>
+        </div>
+      )}
 
-      <span className="lux-stat-label">
-        Categories
-      </span>
-    </div>
-
-    <div className="lux-stat-card">
-      <span className="lux-stat-number">
-        {
-          [
-            ...new Set(
-              products.map((p) => p.brand)
-            ),
-          ].length
-        }
-      </span>
-
-      <span className="lux-stat-label">
-        Brands
-      </span>
-    </div>
-  </div>
-)}
-      {/* LOADERS */}
       {loadingCreate && <Loader />}
       {loadingDelete && <Loader />}
 
@@ -189,29 +147,19 @@ const ProductListScreen = () => {
       ) : filteredProducts?.length === 0 ? (
         <div className="empty-state">
           <FaBoxOpen className="empty-icon" />
-
-          <h3>No Products Found</h3>
-
-          <p>
-            Try searching with another keyword
-          </p>
+          <h3>{t('productList.emptyTitle')}</h3>
+          <p>{t('productList.emptyDesc')}</p>
         </div>
       ) : (
-        <Table
-          hover
-          responsive
-          className="lux-table align-middle"
-        >
+        <Table hover responsive className="lux-table align-middle">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>PRICE</th>
-              <th>CATEGORY</th>
-              <th>BRAND</th>
-              <th className="text-end">
-                ACTIONS
-              </th>
+              <th>{t('productList.id')}</th>
+              <th>{t('productList.name')}</th>
+              <th>{t('productList.price')}</th>
+              <th>{t('productList.category')}</th>
+              <th>{t('productList.brand')}</th>
+              <th className="text-end">{t('productList.actions')}</th>
             </tr>
           </thead>
 
@@ -223,7 +171,7 @@ const ProductListScreen = () => {
                 </td>
 
                 <td className="fw-semibold">
-                  {product.name}
+                  {getText(product.name)}
                 </td>
 
                 <td className="price-text">
@@ -232,17 +180,15 @@ const ProductListScreen = () => {
 
                 <td>
                   <span className="lux-badge">
-                    {product.category}
+                    {getText(product.category)}
                   </span>
                 </td>
 
-                <td>{product.brand}</td>
+                <td>{getText(product.brand)}</td>
 
                 <td className="text-end">
                   <div className="actions">
-                    <LinkContainer
-                      to={`/admin/product/${product._id}/edit`}
-                    >
+                    <LinkContainer to={`/admin/product/${product._id}/edit`}>
                       <Button className="btn-sm lux-edit-btn">
                         <FaEdit />
                       </Button>
@@ -250,9 +196,7 @@ const ProductListScreen = () => {
 
                     <Button
                       className="btn-sm lux-delete-btn"
-                      onClick={() =>
-                        deleteHandler(product._id)
-                      }
+                      onClick={() => deleteHandler(product._id)}
                     >
                       <FaTrash />
                     </Button>

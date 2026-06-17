@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { updateCart } from "../utils/cartUtils";
 
+
 // Get logged in user
 const userInfo = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
@@ -16,8 +17,10 @@ const initialState = localStorage.getItem(cartKey)
   ? JSON.parse(localStorage.getItem(cartKey))
   : {
       cartItems: [],
-      shippingAddress: {},
+      shippingAddress: {deliveryType: "home"},
       paymentMethod: "AmwalPay",
+      discount: 0,
+      couponCode: null,
     };
 
 const cartSlice = createSlice({
@@ -26,22 +29,24 @@ const cartSlice = createSlice({
 
   reducers: {
     addToCart: (state, action) => {
-      const item = action.payload;
+        const item = action.payload;
 
-      const existItem = state.cartItems.find(
-        (x) => x._id === item._id
-      );
+        if (!item.product && item._id) {
+          item.product = item._id;
+        }
 
-      if (existItem) {
-        state.cartItems = state.cartItems.map((x) =>
-          x._id === existItem._id ? item : x
-        );
-      } else {
-        state.cartItems = [...state.cartItems, item];
-      }
+        const existItem = state.cartItems.find((x) => x._id === item._id);
 
-      updateCart(state);
-    },
+        if (existItem) {
+          state.cartItems = state.cartItems.map((x) =>
+            x._id === existItem._id ? item : x
+          );
+        } else {
+          state.cartItems = [...state.cartItems, item];
+        }
+
+        updateCart(state);
+      },
 
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
@@ -65,6 +70,8 @@ const cartSlice = createSlice({
 
     clearCartItems: (state) => {
       state.cartItems = [];
+      state.discount = 0;
+      state.couponCode = null;
 
       updateCart(state);
     },
@@ -77,8 +84,23 @@ const cartSlice = createSlice({
 
       updateCart(state);
     },
+
     loadCart: (state, action) => {
       return action.payload;
+    },
+
+    applyCoupon: (state, action) => {
+      state.discount = action.payload.discount;
+      state.couponCode = action.payload.couponCode;
+
+      updateCart(state);
+    },
+
+    removeCoupon: (state) => {
+      state.discount = 0;
+      state.couponCode = null;
+
+      updateCart(state);
     },
   },
 });
@@ -91,6 +113,8 @@ export const {
   clearCartItems,
   savePhoneNumber,
   loadCart,
+  applyCoupon,
+  removeCoupon,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

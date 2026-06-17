@@ -8,8 +8,11 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
+
   const navRef = useRef(null);
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
@@ -30,22 +33,35 @@ const Header = () => {
     }
   };
 
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("lang", lng);
+  };
+
   const isHome = location.pathname === '/';
 
   const AdminMenu = () => (
     userInfo && userInfo.isAdmin && (
-      <NavDropdown title="Admin" id="adminmenu" className="lux-user-dropdown">
+      <NavDropdown title={t("admin.title")} id="adminmenu" className="lux-user-dropdown">
 
         <LinkContainer to="/admin/productlist">
-          <NavDropdown.Item>Products</NavDropdown.Item>
+          <NavDropdown.Item>{t("admin.products")}</NavDropdown.Item>
         </LinkContainer>
 
         <LinkContainer to="/admin/userlist">
-          <NavDropdown.Item>Users</NavDropdown.Item>
+          <NavDropdown.Item>{t("admin.users")}</NavDropdown.Item>
         </LinkContainer>
 
         <LinkContainer to="/admin/orderlist">
-          <NavDropdown.Item>Orders</NavDropdown.Item>
+          <NavDropdown.Item>{t("admin.orders")}</NavDropdown.Item>
+        </LinkContainer>
+
+        <LinkContainer to="/admin/coupons">
+          <NavDropdown.Item>{t("admin.coupons")}</NavDropdown.Item>
+        </LinkContainer>
+
+        <LinkContainer to="/admin/dashboard">
+          <NavDropdown.Item>{t("admin.dashboard")}</NavDropdown.Item>
         </LinkContainer>
 
       </NavDropdown>
@@ -64,7 +80,7 @@ const Header = () => {
 
                 <LinkContainer to="/">
                   <Navbar.Brand>
-                    <img src={logo} alt="Shadan" style={{ height: "60px" }} />
+                    <img src={logo} alt="Logo" style={{ height: "60px" }} />
                   </Navbar.Brand>
                 </LinkContainer>
 
@@ -72,7 +88,6 @@ const Header = () => {
 
                 <Navbar.Collapse id="basic-navbar-nav" ref={navRef} className="lux-collapse">
 
-                  {/* CLOSE BUTTON (MOBILE ONLY VIA CSS) */}
                   <button
                     className="menu-close-btn"
                     onClick={() => {
@@ -85,9 +100,24 @@ const Header = () => {
 
                   <Nav className="ms-auto">
 
+                    {/* 🌐 LANGUAGE SWITCHER */}
+                    <NavDropdown
+                      title={i18n.language === "ar" ? "🌐 عربي" : "🌐 EN"}
+                      id="lang-switcher"
+                      className="lux-user-dropdown"
+                    >
+                      <NavDropdown.Item onClick={() => changeLanguage("en")}>
+                        English
+                      </NavDropdown.Item>
+
+                      <NavDropdown.Item onClick={() => changeLanguage("ar")}>
+                        العربية
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
                     <LinkContainer to="/cart">
                       <Nav.Link>
-                        <FaShoppingCart /> Cart
+                        <FaShoppingCart /> {t("cart.title")}
                         {cartItems.length > 0 && (
                           <span className="cart-badge">
                             {cartItems.reduce((a, c) => a + c.qty, 0)}
@@ -105,19 +135,19 @@ const Header = () => {
                         className="lux-user-dropdown"
                       >
                         <LinkContainer to="/profile">
-                          <NavDropdown.Item>Profile</NavDropdown.Item>
+                          <NavDropdown.Item>{t("profile")}</NavDropdown.Item>
                         </LinkContainer>
 
                         <NavDropdown.Divider />
 
                         <NavDropdown.Item onClick={logoutHandler}>
-                          Logout
+                          {t("logout")}
                         </NavDropdown.Item>
                       </NavDropdown>
                     ) : (
                       <LinkContainer to="/login">
                         <Nav.Link>
-                          <FaUser /> Sign In
+                          <FaUser /> {t("signin")}
                         </Nav.Link>
                       </LinkContainer>
                     )}
@@ -131,10 +161,12 @@ const Header = () => {
 
           <div className="hero-overlay" />
           <div className="hero-content">
-            <p className="hero-tagline">New Arrivals</p>
-            <h1>Crafted With Passion</h1>
-            <p className="hero-sub">Explore our latest collection</p>
-            <a href="#products" className="hero-btn">Shop Now</a>
+            <p className="hero-tagline">{t("hero.newArrivals")}</p>
+            <h1>{t("hero.title")}</h1>
+            <p className="hero-sub">{t("hero.subtitle")}</p>
+            <a href="#products" className="hero-btn">
+              {t("hero.shopNow")}
+            </a>
           </div>
 
         </div>
@@ -147,7 +179,7 @@ const Header = () => {
 
               <LinkContainer to="/">
                 <Navbar.Brand>
-                  <img src={logo} alt="Shadan" style={{ height: "50px" }} />
+                  <img src={logo} alt="Logo" style={{ height: "50px" }} />
                 </Navbar.Brand>
               </LinkContainer>
 
@@ -164,11 +196,27 @@ const Header = () => {
                 >
                   ✕
                 </button>
+
                 <Nav className="ms-auto">
+
+                  {/* 🌐 LANGUAGE SWITCHER */}
+                  <NavDropdown
+                    title={i18n.language === "ar" ? "🌐 عربي" : "🌐 EN"}
+                    id="lang-switcher"
+                    className="lux-user-dropdown"
+                  >
+                    <NavDropdown.Item onClick={() => changeLanguage("en")}>
+                      English
+                    </NavDropdown.Item>
+
+                    <NavDropdown.Item onClick={() => changeLanguage("ar")}>
+                      العربية
+                    </NavDropdown.Item>
+                  </NavDropdown>
 
                   <LinkContainer to="/cart">
                     <Nav.Link>
-                      <FaShoppingCart /> Cart
+                      <FaShoppingCart /> {t("cart.title")}
                       {cartItems.length > 0 && (
                         <span className="cart-badge">
                           {cartItems.reduce((a, c) => a + c.qty, 0)}
@@ -182,19 +230,19 @@ const Header = () => {
                   {userInfo ? (
                     <NavDropdown title={userInfo.name} id="username" className="lux-user-dropdown">
                       <LinkContainer to="/profile">
-                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                        <NavDropdown.Item>{t("profile")}</NavDropdown.Item>
                       </LinkContainer>
 
                       <NavDropdown.Divider />
 
                       <NavDropdown.Item onClick={logoutHandler}>
-                        Logout
+                        {t("logout")}
                       </NavDropdown.Item>
                     </NavDropdown>
                   ) : (
                     <LinkContainer to="/login">
                       <Nav.Link>
-                        <FaUser /> Sign In
+                        <FaUser /> {t("signin")}
                       </Nav.Link>
                     </LinkContainer>
                   )}

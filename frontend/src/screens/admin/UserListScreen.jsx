@@ -5,26 +5,33 @@ import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
-import { useGetUsersQuery, useDeleteUserMutation } from '../../slices/usersApiSlice';
-import {toast} from 'react-toastify';
+import {
+  useGetUsersQuery,
+  useDeleteUserMutation
+} from '../../slices/usersApiSlice';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+
 import '../../assets/styles/UserListScreen.css';
 
 const UserListScreen = () => {
+  const { t } = useTranslation();
+
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
   const { data: orders } = useGetOrdersQuery();
-  const [deleteUser, {isLoading: loadingDelete}] = useDeleteUserMutation();
-  
+  const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  const deleteHandler = async(id) => {
-    if(window.confirm('Are you sure?')){
-        try {
-            await deleteUser(id);
-            refetch();
-        } catch (err) {
-            toast.error(err?.data?.message || err.error);
-        }
+  const deleteHandler = async (id) => {
+    if (window.confirm(t('userList.confirmDelete'))) {
+      try {
+        await deleteUser(id);
+        refetch();
+        toast.success(t('userList.deleted'));
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
     }
   };
 
@@ -36,57 +43,54 @@ const UserListScreen = () => {
   );
 
   const getUserPhone = (userId) => {
-  const userOrders = orders?.filter(
-            (order) => order.user?._id === userId
-        );
+    const userOrders = orders?.filter(
+      (order) => order.user?._id === userId
+    );
 
-        if (!userOrders?.length) return '-';
+    if (!userOrders?.length) return '-';
 
-        // آخر order
-        const lastOrder = userOrders[userOrders.length - 1];
+    const lastOrder = userOrders[userOrders.length - 1];
 
-        return lastOrder?.shippingAddress?.phoneNumber || '-';
-        };
+    return lastOrder?.shippingAddress?.phoneNumber || '-';
+  };
 
   return (
     <>
-      {/* Header */}
+      {/* HEADER */}
       <div className="lux-page-header">
         <div>
-          <h1 className="lux-title">Users Management</h1>
-          <p className="lux-subtitle">
-            Manage and monitor all registered users
-          </p>
+          <h1 className="lux-title">{t('userList.title')}</h1>
+          <p className="lux-subtitle">{t('userList.subtitle')}</p>
         </div>
 
         <div className="lux-search">
           <Form.Control
             type="text"
-            placeholder="Search users..."
+            placeholder={t('userList.search')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </div>
 
-      {/* Stats */}
+      {/* STATS */}
       {!isLoading && users && (
         <div className="stats-wrapper">
           <div className="stats-card simple">
             <h3>{users.length}</h3>
-            <p>Total Users</p>
+            <p>{t('userList.total')}</p>
           </div>
 
           <div className="stats-card simple">
             <h3>{users.filter((u) => u.isAdmin).length}</h3>
-            <p>Admins</p>
+            <p>{t('userList.admins')}</p>
           </div>
         </div>
       )}
 
-      {loadingDelete && <Loader/>}
+      {loadingDelete && <Loader />}
 
-      {/* Table */}
+      {/* TABLE */}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -97,26 +101,24 @@ const UserListScreen = () => {
         <Table hover responsive className="lux-table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>PHONE</th>
-              <th>EMAIL</th>
-              <th>ROLE</th>
+              <th>{t('userList.id')}</th>
+              <th>{t('userList.name')}</th>
+              <th>{t('userList.phone')}</th>
+              <th>{t('userList.email')}</th>
+              <th>{t('userList.role')}</th>
               <th></th>
             </tr>
           </thead>
 
           <tbody>
-            {filteredUsers?.map((user, index) => (
+            {filteredUsers?.map((user) => (
               <tr key={user._id}>
 
                 <td>{user._id.slice(-6)}</td>
 
                 <td>{user.name}</td>
 
-                <td>
-                {getUserPhone(user._id)}
-                </td>
+                <td>{getUserPhone(user._id)}</td>
 
                 <td>
                   <a href={`mailto:${user.email}`}>
@@ -127,11 +129,11 @@ const UserListScreen = () => {
                 <td>
                   {user.isAdmin ? (
                     <span className="role-badge admin">
-                      ADMIN
+                      {t('userList.admin')}
                     </span>
                   ) : (
                     <span className="role-badge user">
-                      USER
+                      {t('userList.user')}
                     </span>
                   )}
                 </td>

@@ -103,3 +103,44 @@
 .checkout-btn:hover {
   background-color: #3e2723 !important;
 }
+.coupon-box {
+  margin-top: 18px;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #ededed;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  transition: 0.3s ease;
+}
+
+.coupon-box:hover {
+  box-shadow: 0 8px 18px rgba(58, 31, 26, 0.06);
+  transform: translateY(-2px);
+}
+
+/* input styling */
+.coupon-box input {
+  border-radius: 12px !important;
+  border: 1px solid #ededed !important;
+  padding: 10px 14px !important;
+
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+  outline: none;
+}
+
+/* focus effect */
+.coupon-box input:focus {
+  border-color: #5a2e27 !important;
+  box-shadow: 0 0 0 3px rgba(90, 46, 39, 0.08) !important;
+}
+
+/* placeholder style */
+.coupon-box input::placeholder {
+  color: #999;
+  font-size: 0.9rem;
+}

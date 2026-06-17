@@ -4,6 +4,8 @@ import { Form, Button } from "react-bootstrap";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
 import {
   useGetUserDetailsQuery,
   useUpdateUserMutation
@@ -12,21 +14,18 @@ import {
 import "../../assets/styles/userEdeitScreen.css";
 
 const UserEditScreen = () => {
+  const { t } = useTranslation();
   const { id: userId } = useParams();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  
 
-  const { data: user,refetch, isLoading, error } =
+  const { data: user, refetch, isLoading, error } =
     useGetUserDetailsQuery(userId);
 
   const [updateUser, { isLoading: loadingUpdate }] =
     useUpdateUserMutation();
-
-
- 
 
   const navigate = useNavigate();
 
@@ -40,26 +39,29 @@ const UserEditScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     try {
-        await updateUser({userId, name, email, isAdmin});
-        toast.success('User updated successfuly');
-        refetch();
-        navigate('/admin/userlist');
+      await updateUser({ userId, name, email, isAdmin }).unwrap();
+
+      toast.success(t("userEdit.updatedSuccess"));
+
+      refetch();
+      navigate("/admin/userlist");
     } catch (err) {
-        toast.error(err?.data?.message || err.error);
+      toast.error(err?.data?.message || err.error);
     }
   };
-
 
   return (
     <div className="lux-edit-wrapper">
       <div className="lux-edit-card">
 
+        {/* ❌ no common namespace */}
         <Link to="/admin/userlist" className="btn btn-light mb-4">
-          ← Go Back
+          ← {t("userEdit.back")}
         </Link>
 
-        <h1 className="lux-title">Edit User</h1>
+        <h1 className="lux-title">{t("userEdit.title")}</h1>
 
         {loadingUpdate && <Loader />}
 
@@ -72,54 +74,48 @@ const UserEditScreen = () => {
         ) : (
           <Form onSubmit={submitHandler}>
 
-            {/* NAME */}
-            <Form.Group controlId="name" className="mb-4">
+            <Form.Group className="mb-4">
               <Form.Label className="lux-label">
-                Full Name
+                {t("userEdit.fullName")}
               </Form.Label>
 
               <Form.Control
                 className="lux-input"
                 type="text"
-                placeholder="Enter full name"
+                placeholder={t("userEdit.namePlaceholder")}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
 
-            {/* EMAIL */}
-            <Form.Group controlId="email" className="mb-4">
+            <Form.Group className="mb-4">
               <Form.Label className="lux-label">
-                Email Address
+                {t("userEdit.email")}
               </Form.Label>
 
               <Form.Control
                 className="lux-input"
                 type="email"
-                placeholder="Enter email"
+                placeholder={t("userEdit.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
 
-            {/* ADMIN */}
-            <Form.Group
-              controlId="isAdmin"
-              className="lux-check-wrapper mb-4"
-            >
+            <Form.Group controlId="isAdmin" className="mb-4">
+              <div className="lux-checkbox-row">
               <Form.Check
+                inline
                 type="checkbox"
-                label="Administrator Access"
+                label={t("userEdit.adminAccess")}
                 checked={isAdmin}
-                onChange={(e) =>
-                  setIsAdmin(e.target.checked)
-                }
+                onChange={(e) => setIsAdmin(e.target.checked)}
               />
+              </div>
             </Form.Group>
 
-            {/* BUTTON */}
             <Button type="submit" className="lux-btn">
-              Update User
+              {t("userEdit.updateBtn")}
             </Button>
 
           </Form>

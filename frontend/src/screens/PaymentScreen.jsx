@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+
 import { savePaymentMethod } from "../slices/cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
-import '../assets/styles/shippingScreen.css';
+
+import "../assets/styles/shippingScreen.css";
 
 const PaymentScreen = () => {
+  const { t } = useTranslation();
+
   const [paymentMethod, setPaymentMethod] = useState("AmwalPay");
 
   const dispatch = useDispatch();
@@ -33,13 +38,15 @@ const PaymentScreen = () => {
 
         <CheckoutSteps step1 step2 step3 />
 
-        <h1 className="payment-title">Payment Method</h1>
+        <h1 className="payment-title">
+          {t("payment.title")}
+        </h1>
 
         <Form onSubmit={submitHandler}>
 
           <Form.Group className="payment-group">
             <Form.Label className="payment-label">
-              Select Payment Method
+              {t("payment.selectMethod")}
             </Form.Label>
 
             <div className="payment-option">
@@ -51,14 +58,14 @@ const PaymentScreen = () => {
                 checked={paymentMethod === "AmwalPay"}
                 onChange={(e) => setPaymentMethod(e.target.value)}
                 className="payment-radio"
-                label="Amwal Pay (Cards / Apple Pay)"
+                label={t("payment.amwalPay")}
               />
             </div>
 
           </Form.Group>
 
           <Button type="submit" className="payment-btn">
-            Continue
+            {t("payment.continue")}
           </Button>
 
         </Form>

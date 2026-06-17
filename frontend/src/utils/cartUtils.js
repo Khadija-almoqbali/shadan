@@ -1,10 +1,14 @@
 export const addDecimals = (num) => {
-  return (Math.round(num * 100) / 100).toFixed(2);
+  return Math.round(num * 100) / 100;
 };
 
 export const updateCart = (state) => {
-  
-  // Calculate items price
+
+  // تأكد من وجود discount دائمًا
+  state.discount = Number(state.discount || 0);
+  state.couponCode = state.couponCode || null;
+
+  // Calculate items price (number)
   state.itemsPrice = addDecimals(
     state.cartItems.reduce(
       (acc, item) => acc + item.price * item.qty,
@@ -19,29 +23,30 @@ export const updateCart = (state) => {
 
   // Tax price
   state.taxPrice = addDecimals(
-    Number((0.05 * state.itemsPrice).toFixed(2))
+    0.05 * state.itemsPrice
   );
 
-  // Total price
-  state.totalPrice = (
-    Number(state.itemsPrice) +
-    Number(state.shippingPrice) +
-    Number(state.taxPrice)
-  ).toFixed(2);
+  // Total price (with discount)
+  const subtotal =
+    state.itemsPrice +
+    state.shippingPrice +
+    state.taxPrice;
+
+  state.totalPrice = addDecimals(
+  subtotal - Math.min(state.discount, subtotal)
+);
 
   // Get current user
   const userInfo = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
 
-  // Create unique cart key
   const cartKey = userInfo?._id
     ? `cart_${userInfo._id}`
     : "cart_guest";
-  console.log("Current cart key:", cartKey);
-  // Save cart per user
+
+  // مهم: تأكد أنك تحفظ كل شيء (بما فيه الخصم)
   localStorage.setItem(cartKey, JSON.stringify(state));
 
   return state;
-  
 };

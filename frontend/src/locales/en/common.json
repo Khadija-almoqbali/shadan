@@ -1,0 +1,580 @@
+{
+  "cartTitle": "Shopping Cart",
+  "cartSubtitle": "Your selected jewelry pieces",
+
+  "cartEmpty": "Your cart is empty",
+  "goBack": "Go Back",
+
+  "orderSummary": "Order Summary",
+
+  "items": "Items",
+  "subtotal": "Subtotal",
+  "discount": "Discount",
+  "total": "Total",
+
+  "couponPlaceholder": "Enter coupon code",
+  "applyCoupon": "Apply Coupon",
+  "applying": "Applying...",
+
+  "checkout": "Proceed to Checkout",
+
+  "qty": "Qty",
+
+  "couponSuccess": "Coupon applied successfully!",
+  "couponInvalid": "Invalid coupon",
+
+  "signin": "Sign In",
+  "logout": "Logout",
+  "profile": "Profile",
+
+  "cart": {
+    "title": "Cart"
+  },
+
+  "admin": {
+    "title": "Admin",
+    "products": "Products",
+    "users": "Users",
+    "orders": "Orders",
+    "coupons": "Coupons",
+    "dashboard": "Dashboard"
+  },
+
+  "hero": {
+    "newArrivals": "New Arrivals",
+    "title": "Crafted With Passion",
+    "subtitle": "Explore our latest collection",
+    "shopNow": "Shop Now"
+  },
+  "home": {
+
+    "subtitle": "TIMELESS ELEGANCE",
+
+    "title": "Curated Collection",
+
+    "description": "Discover a carefully curated selection of accessories designed to elevate every look with elegance, sophistication, and timeless beauty.",
+
+    "searchPlaceholder": "Search Collection",
+
+    "noItems": "No Items Found",
+
+    "trySearch": "Try searching for another piece."
+
+  },
+  "login": {
+
+    "title": "Login",
+
+    "subtitle": "Login to continue your luxury experience",
+
+    "emailLabel": "Email Address",
+
+    "emailPlaceholder": "Enter your email",
+
+    "passwordLabel": "Password",
+
+    "passwordPlaceholder": "Enter your password",
+
+    "signin": "Sign In",
+
+    "loading": "Signing in...",
+
+    "newCustomer": "New Customer?",
+
+    "createAccount": "Create Account"
+
+  },
+  "register": {
+
+    "title": "Sign Up",
+
+    "subtitle": "Create your account to continue your luxury experience",
+
+    "nameLabel": "Name",
+
+    "namePlaceholder": "Enter your name",
+
+    "emailLabel": "Email Address",
+
+    "emailPlaceholder": "Enter your email",
+
+    "passwordLabel": "Password",
+
+    "passwordPlaceholder": "Enter your password",
+
+    "confirmPasswordLabel": "Confirm Password",
+
+    "confirmPasswordPlaceholder": "Confirm your password",
+
+    "button": "Register",
+
+    "loading": "Creating account...",
+
+    "alreadyAccount": "Already have an account?",
+
+    "login": "Login",
+
+    "passwordMismatch": "Passwords do not match"
+
+  },
+  "order": {
+
+    "title": "Order Details",
+
+    "shipping": "Shipping",
+
+    "payment": "Payment",
+
+    "orderItems": "Order Items",
+
+    "summary": "Order Summary",
+
+    "name": "Name",
+
+    "phone": "Phone",
+
+    "deliveryType": "Delivery Type",
+
+    "address": "Address",
+
+    "homeDelivery": "🏠 Home Delivery",
+
+    "officePickup": "🏢 Office Pickup",
+
+    "delivered": "Delivered on",
+
+    "notDelivered": "Order has not been delivered yet",
+
+    "paymentMethod": "Method",
+
+    "paidOn": "Paid on",
+
+    "pendingPayment": "Payment is still pending",
+
+    "items": "Items",
+
+    "shippingCost": "Shipping",
+
+    "tax": "Tax",
+
+    "couponCode": "Coupon Code",
+
+    "discount": "Discount",
+
+    "total": "Total",
+
+    "payNow": "Pay Now",
+
+    "redirecting": "Redirecting...",
+
+    "markDelivered": "Mark As Delivered",
+
+    "updating": "Updating..."
+
+  },
+  "paymentCancel": {
+
+    "title": "Payment Failed",
+
+    "description": "Something went wrong or the payment was cancelled. Please try again.",
+
+    "tryAgain": "Try Again",
+
+    "backHome": "Back to Home"
+
+  },
+  "payment": {
+
+    "title": "Payment Method",
+
+    "selectMethod": "Select Payment Method",
+
+    "amwalPay": "Amwal Pay (Cards / Apple Pay)",
+
+    "continue": "Continue"
+
+  },
+  "shipping": {
+
+    "title": "Shipping Details",
+
+    "subtitle": "Please enter your delivery information",
+
+    "addressLabel": "Address",
+
+    "addressPlaceholder": "123 Street, Building name",
+
+    "cityLabel": "City",
+
+    "cityPlaceholder": "Muscat",
+
+    "codeLabel": "Code",
+
+    "phoneLabel": "Phone Number",
+
+    "phonePlaceholder": "Enter phone number",
+
+    "countryLabel": "Country",
+
+    "countryPlaceholder": "Oman",
+
+    "deliveryTitle": "Delivery Type",
+
+    "homeDelivery": "Home Delivery",
+
+    "officePickup": "Office Pickup",
+
+    "continue": "Continue",
+
+    "error": "Please fill in all shipping details before continuing"
+
+  },
+  "placeOrder": {
+
+    "deliveryType": "Delivery Type",
+
+    "home": "🏠 Home Delivery",
+
+    "office": "🏢 Office Pickup",
+
+    "address": "Address",
+
+    "phone": "Phone Number",
+
+    "payment": "Payment Method",
+
+    "method": "Method",
+
+    "itemsTitle": "Order Items",
+
+    "emptyCart": "Your cart is empty",
+
+    "noPhone": "No phone number provided",
+
+    "summary": "Order Summary",
+
+    "items": "Items",
+
+    "coupon": "Coupon Code",
+
+    "discount": "Discount",
+
+    "shipping": "Shipping",
+
+    "total": "Total",
+
+    "button": "Place Order",
+
+    "error": "Something went wrong"
+
+  },
+  "paymentSuccess": {
+
+    "title": "Payment Successful",
+
+    "description": "Thank you! Your payment has been completed successfully. Your order is now being processed.",
+
+    "viewOrders": "View My Orders",
+
+    "backHome": "Back to Home"
+
+  },
+  "product": {
+    "description": "Description",
+
+    "submit": "Submit",
+
+    "back": "← Go Back",
+
+    "price": "Price",
+
+    "status": "Status",
+
+    "qty": "Qty",
+
+    "addToCart": "Add to Cart",
+
+    "reviews": "Reviews",
+
+    "noReviews": "No Reviews",
+
+    "writeReview": "Write a Customer Review",
+
+    "rating": "Rating",
+
+    "comment": "Comment",
+
+    "select": "Select...",
+
+    "poor": "Poor",
+
+    "fair": "Fair",
+
+    "good": "Good",
+
+    "veryGood": "Very Good",
+
+    "excellent": "Excellent",
+
+    "loginMessage": "Please",
+
+    "login": "log in"
+
+  },
+  "profilePage": {
+
+    "section": "Profile Details",
+
+    "ordersTitle": "My Orders",
+
+    "name": "Name",
+
+    "email": "Email Address",
+
+    "password": "Password",
+
+    "confirmPassword": "Confirm Password",
+
+    "updateBtn": "Update Profile",
+
+    "id": "ID",
+
+    "date": "DATE",
+
+    "total": "TOTAL",
+
+    "paid": "PAID",
+
+    "delivered": "DELIVERED",
+
+    "details": "Details",
+
+    "passwordMismatch": "Passwords do not match",
+
+    "updatedSuccess": "Profile updated successfully"
+
+  },
+  "coupons": {
+
+    "title": "Coupons Management",
+
+    "subtitle": "Create and manage discount coupons",
+
+    "code": "Coupon Code",
+
+    "percentage": "Percentage %",
+
+    "fixed": "Fixed Amount",
+
+    "value": "Discount Value",
+
+    "minPurchase": "Minimum Purchase",
+
+    "add": "Add Coupon",
+
+    "active": "Active",
+
+    "disabled": "Disabled",
+
+    "delete": "Delete",
+
+    "table": {
+
+      "code": "Code",
+
+      "type": "Type",
+
+      "value": "Value",
+
+      "min": "Min Purchase",
+
+      "status": "Status",
+
+      "action": "Action"
+
+    }
+
+  },
+  "orders": {
+
+    "title": "Orders",
+
+    "subtitle": "Manage and export all orders",
+
+    "search": "Search orders (ID / user)...",
+
+    "generatePdf": "Generate Invoices (PDF)",
+
+    "totalOrders": "Total Orders",
+
+    "paidOrders": "Paid Orders",
+
+    "selected": "Selected for Invoice",
+
+    "invoice": "INVOICE",
+
+    "name": "Name",
+
+    "phone": "Phone",
+
+    "address": "Address",
+
+    "city": "City",
+
+    "country": "Country",
+
+    "deliveryType": "Delivery Type",
+
+    "officePickup": "Office Pickup",
+
+    "homeDelivery": "Home Delivery",
+
+    "orderId": "Order ID",
+
+    "date": "Date",
+
+    "product": "Product",
+
+    "qty": "Qty",
+
+    "price": "Price",
+
+    "total": "Total",
+
+    "thanks": "Thank you for your order :)",
+
+    "select": "Select",
+
+    "id": "ID",
+
+    "user": "User",
+
+    "coupon": "Coupon",
+
+    "discount": "Discount",
+
+    "paid": "Paid",
+
+    "delivered": "Delivered",
+
+    "delivery": "Delivery",
+
+    "details": "Details",
+
+    "detailsBtn": "Details",
+
+    "office": "Office",
+
+    "home": "Home"
+
+  },
+  "common": {
+
+    "goBack": "Go Back"
+
+  },
+
+  
+
+"adminProductEdit": {
+  "title": "Edit Product",
+  "nameEn": "Name (EN)",
+  "nameAr": "Name (AR)",
+  "price": "Price",
+  "image": "Image",
+  "brandEn": "Brand (EN)",
+  "brandAr": "Brand (AR)",
+  "categoryEn": "Category (EN)",
+  "categoryAr": "Category (AR)",
+  "descriptionEn": "Description (EN)",
+  "descriptionAr": "Description (AR)",
+  "stock": "Stock",
+  "updateBtn": "Update Product",
+  "updatedSuccess": "Product updated successfully"
+},
+
+  "ui": {
+
+    "goBack": "Go Back"
+
+  },
+  "productList": {
+
+    "title": "Products Management",
+
+    "subtitle": "Manage and monitor store products",
+
+    "search": "Search products...",
+
+    "create": "Create Product",
+
+    "total": "Total Products",
+
+    "categories": "Categories",
+
+    "brands": "Brands",
+
+    "emptyTitle": "No Products Found",
+
+    "emptyDesc": "Try searching with another keyword",
+
+    "id": "ID",
+
+    "name": "Name",
+
+    "price": "Price",
+
+    "category": "Category",
+
+    "brand": "Brand",
+
+    "actions": "Actions",
+
+    "confirmDelete": "Are you sure you want to delete this product?",
+
+    "confirmCreate": "Are you sure you want to create a new product?",
+
+    "deleted": "Product deleted",
+
+    "created": "Product created"
+
+  },
+  "userEdit": {
+
+  "title": "Edit User",
+
+  "fullName": "Full Name",
+
+  "email": "Email Address",
+
+  "adminAccess": "Administrator Access",
+
+  "updateBtn": "Update User",
+
+  "updatedSuccess": "User updated successfully",
+
+  "namePlaceholder": "Enter full name",
+
+  "emailPlaceholder": "Enter email",
+
+  "back": "Go Back"
+
+},
+"userList": {
+  "title": "Users Management",
+  "subtitle": "Manage and monitor all registered users",
+  "search": "Search users...",
+  "total": "Total Users",
+  "admins": "Admins",
+  "id": "ID",
+  "name": "Name",
+  "phone": "Phone",
+  "email": "Email",
+  "role": "Role",
+  "admin": "ADMIN",
+  "user": "USER",
+  "confirmDelete": "Are you sure you want to delete this user?",
+  "deleted": "User deleted successfully"
+}
+  
+}

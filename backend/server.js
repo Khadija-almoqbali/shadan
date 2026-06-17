@@ -14,6 +14,7 @@ import userRoutes from "./routes/userRoute.js";
 import orderRoutes from "./routes/orderRoute.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import uploadRoutes from './routes/uploadRoutes.js'
+import couponRoutes from "./routes/couponRoutes.js";
 
 
 const port = process.env.PORT || 8000;
@@ -47,8 +48,8 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use('/api/upload', uploadRoutes);
-
 app.use("/api/payments", paymentRoutes);
+app.use("/api/coupons", couponRoutes);
 
 app.get("/api/config/amwalpay", (req, res) => {
   if (!process.env.AMWALPAY_PUBLIC_KEY) {

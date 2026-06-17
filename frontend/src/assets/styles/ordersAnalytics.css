@@ -1,0 +1,167 @@
+/* =========================
+   ORDERS ANALYTICS LUXURY
+   + RESPONSIVE
+========================= */
+
+.analytics-page {
+  padding: 20px;
+}
+
+/* HEADER */
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.analytics-title {
+  color: #3a1f1a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.analytics-subtitle {
+  color: #5a2e27;
+  opacity: 0.75;
+  margin: 5px 0 0;
+}
+
+/* FILTER CARD */
+.analytics-filter-card {
+  background: #ffffff;
+  border: 1px solid #ededed;
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: 0.25s ease;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.analytics-filter-card select {
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 220px;
+  transition: 0.3s ease;
+  color: #3a1f1a;
+}
+
+.analytics-filter-card select:focus {
+  border-color: #5a2e27;
+  box-shadow: 0 0 0 3px rgba(90, 46, 39, 0.08);
+  outline: none;
+}
+
+/* CHART CARD */
+.analytics-chart-card {
+  background: #ffffff;
+  border: 1px solid #ededed;
+  border-radius: 14px;
+  padding: 20px;
+  transition: 0.25s ease;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.analytics-chart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(58, 31, 26, 0.06);
+}
+
+/* SUMMARY */
+.analytics-summary {
+  margin-top: 20px;
+  background: #ffffff;
+  border: 1px solid #ededed;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.analytics-summary h5 {
+  margin-bottom: 10px;
+  color: #3a1f1a;
+  font-weight: 700;
+}
+
+.analytics-summary ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.analytics-summary li {
+  color: #5a2e27;
+  opacity: 0.85;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* ACCENT LINE */
+.analytics-chart-card::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #3a1f1a, #5a2e27, #c9a227);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+/* =========================
+   📱 RESPONSIVE DESIGN
+========================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .analytics-title {
+    font-size: 1.6rem;
+  }
+
+  .analytics-filter-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .analytics-filter-card select {
+    width: 100%;
+  }
+
+  .analytics-chart-card {
+    padding: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .analytics-page {
+    padding: 12px;
+  }
+
+  .analytics-title {
+    font-size: 1.4rem;
+  }
+
+  .analytics-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .analytics-chart-card {
+    padding: 12px;
+  }
+
+  .analytics-summary {
+    padding: 12px;
+  }
+
+  .analytics-summary li {
+    font-size: 0.85rem;
+  }
+}

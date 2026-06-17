@@ -1,26 +1,30 @@
 import { Link } from "react-router-dom";
-import '../assets/styles/successCancelPay.css';
+import { useTranslation } from "react-i18next";
+import "../assets/styles/successCancelPay.css";
 
 const PaymentCancelScreen = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="payment-result-wrapper">
       <div className="payment-result-card cancel">
 
         <div className="icon cancel-icon">✕</div>
 
-        <h1 className="result-title">Payment Failed</h1>
+        <h1 className="result-title">
+          {t("paymentCancel.title")}
+        </h1>
 
         <p className="result-text">
-          Something went wrong or the payment was cancelled.
-          Please try again.
+          {t("paymentCancel.description")}
         </p>
 
         <Link to="/payment" className="result-btn">
-          Try Again
+          {t("paymentCancel.tryAgain")}
         </Link>
 
         <Link to="/" className="result-link">
-          Back to Home
+          {t("paymentCancel.backHome")}
         </Link>
 
       </div>

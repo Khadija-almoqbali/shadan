@@ -1,0 +1,9 @@
+.rtl-content {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr-content {
+  direction: ltr;
+  text-align: left;
+}

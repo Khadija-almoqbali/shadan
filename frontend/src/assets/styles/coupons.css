@@ -1,0 +1,214 @@
+/* ===== PAGE HEADER ===== */
+.lux-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.lux-title {
+  color: #3a1f1a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.lux-subtitle {
+  color: #5a2e27;
+  opacity: 0.7;
+  margin: 5px 0 0;
+}
+
+/* ===== FORM ===== */
+.lux-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #ededed;
+}
+
+.lux-form input,
+.lux-form select {
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-width: 180px;
+  transition: 0.3s ease;
+  outline: none;
+  flex: 1;
+}
+
+.lux-form input:focus,
+.lux-form select:focus {
+  border-color: #5a2e27;
+  box-shadow: 0 0 0 3px rgba(90, 46, 39, 0.08);
+}
+
+/* ADD BUTTON */
+.lux-add-btn {
+  background: #3a1f1a;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.lux-add-btn:hover {
+  background: #5a2e27;
+  transform: translateY(-2px);
+}
+
+/* ===== TABLE ===== */
+.lux-table {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #ededed;
+}
+
+.lux-table thead {
+  background: #3a1f1a;
+}
+
+.lux-table thead th {
+  color: #ffffff;
+  padding: 16px;
+  border: none;
+  font-weight: 600;
+}
+
+.lux-table tbody tr {
+  transition: 0.25s ease;
+  border-bottom: 1px solid #ededed;
+}
+
+.lux-table tbody tr:hover {
+  background: rgba(90, 46, 39, 0.04);
+}
+
+.lux-table td {
+  padding: 16px;
+  color: #3a1f1a;
+}
+
+/* BADGE */
+.status-active {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(39, 174, 96, 0.1);
+  color: #27ae60;
+}
+
+.status-disabled {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(192, 57, 43, 0.1);
+  color: #c0392b;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.lux-delete-btn {
+  background: #fff;
+  border: 1px solid #c0392b;
+  color: #c0392b;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.lux-delete-btn:hover {
+  background: #c0392b;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   📱 RESPONSIVE DESIGN
+========================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .lux-title {
+    font-size: 1.6rem;
+  }
+
+  .lux-form {
+    padding: 14px;
+  }
+
+  .lux-form input,
+  .lux-form select {
+    min-width: 150px;
+  }
+
+  .lux-table td,
+  .lux-table thead th {
+    padding: 12px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .lux-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .lux-title {
+    font-size: 1.4rem;
+  }
+
+  .lux-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .lux-form {
+    flex-direction: column;
+  }
+
+  .lux-form input,
+  .lux-form select {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .lux-add-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lux-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lux-delete-btn {
+    width: 100%;
+  }
+}
