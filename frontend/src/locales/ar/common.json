@@ -118,61 +118,6 @@
     "passwordMismatch": "كلمات المرور غير متطابقة"
 
   },
-  "order": {
-
-    "title": "تفاصيل الطلب",
-
-    "shipping": "الشحن",
-
-    "payment": "الدفع",
-
-    "orderItems": "المنتجات",
-
-    "summary": "ملخص الطلب",
-
-    "name": "الاسم",
-
-    "phone": "رقم الهاتف",
-
-    "deliveryType": "نوع التوصيل",
-
-    "address": "العنوان",
-
-    "homeDelivery": "🏠 توصيل للمنزل",
-
-    "officePickup": "🏢 استلام من المكتب",
-
-    "delivered": "تم التوصيل بتاريخ",
-
-    "notDelivered": "لم يتم توصيل الطلب بعد",
-
-    "paymentMethod": "طريقة الدفع",
-
-    "paidOn": "تم الدفع بتاريخ",
-
-    "pendingPayment": "الدفع قيد الانتظار",
-
-    "items": "العناصر",
-
-    "shippingCost": "الشحن",
-
-    "tax": "الضريبة",
-
-    "couponCode": "كود الخصم",
-
-    "discount": "الخصم",
-
-    "total": "الإجمالي",
-
-    "payNow": "ادفع الآن",
-
-    "redirecting": "جاري التحويل...",
-
-    "markDelivered": "تحديد كمُسلم",
-
-    "updating": "جاري التحديث..."
-
-  },
   "paymentCancel": {
 
     "title": "فشل الدفع",
@@ -281,49 +226,30 @@
 
   },
   "product": {
+  "description": "الوصف",
+  "submit": "إرسال",
+  "back": "← الرجوع",
+  "price": "السعر",
+  "status": "الحالة",
+  "qty": "الكمية",
+  "addToCart": "إضافة إلى السلة",
+  "reviews": "التقييمات",
+  "noReviews": "لا توجد تقييمات",
+  "writeReview": "اكتب تقييم للمنتج",
+  "rating": "التقييم",
+  "comment": "التعليق",
+  "select": "اختر...",
+  "poor": "ضعيف",
+  "fair": "مقبول",
+  "good": "جيد",
+  "veryGood": "جيد جداً",
+  "excellent": "ممتاز",
+  "loginMessage": "الرجاء",
+  "login": "تسجيل الدخول",
 
-
-    "description": "الوصف",
-
-    "submit": "إرسال",
-
-    "back": "← الرجوع",
-
-    "price": "السعر",
-
-    "status": "الحالة",
-
-    "qty": "الكمية",
-
-    "addToCart": "إضافة إلى السلة",
-
-    "reviews": "التقييمات",
-
-    "noReviews": "لا توجد تقييمات",
-
-    "writeReview": "اكتب تقييم للمنتج",
-
-    "rating": "التقييم",
-
-    "comment": "التعليق",
-
-    "select": "اختر...",
-
-    "poor": "ضعيف",
-
-    "fair": "مقبول",
-
-    "good": "جيد",
-
-    "veryGood": "جيد جداً",
-
-    "excellent": "ممتاز",
-
-    "loginMessage": "الرجاء",
-
-    "login": "تسجيل الدخول"
-
-  },
+  "inStock": "متوفر",
+  "outOfStock": "غير متوفر"
+},
   "profilePage": {
 
     "section": "بيانات الحساب",
@@ -560,6 +486,65 @@
   "user": "مستخدم",
   "confirmDelete": "هل أنت متأكد من حذف هذا المستخدم؟",
   "deleted": "تم حذف المستخدم بنجاح"
+},
+"order": {
+  "title": "تفاصيل الطلب",
+
+  "shipping": "الشحن",
+  "payment": "الدفع",
+
+  "orderItems": "عناصر الطلب",
+  "summary": "ملخص الطلب",
+
+  "name": "الاسم",
+  "phone": "رقم الهاتف",
+  "address": "العنوان",
+  "city": "المدينة",
+  "country": "الدولة",
+
+  "deliveryType": "نوع التوصيل",
+  "officePickup": "🏢 استلام من المكتب",
+  "homeDelivery": "🏠 توصيل للمنزل",
+
+  "delivered": "تم التوصيل بتاريخ",
+  "notDelivered": "لم يتم توصيل الطلب بعد",
+
+  "paymentMethod": "طريقة الدفع",
+  "paidOn": "تم الدفع بتاريخ",
+  "pendingPayment": "الدفع لم يتم بعد",
+
+  "items": "المنتجات",
+  "itemsEmpty": "السلة فارغة",
+
+  "shippingCost": "الشحن",
+  "tax": "الضريبة",
+
+  "couponCode": "كود الخصم",
+  "coupon": "كوبون",
+
+  "discount": "الخصم",
+  "total": "المجموع",
+
+  "payNow": "ادفع الآن",
+  "placeOrder": "إتمام الطلب",
+  "redirecting": "جاري التحويل...",
+  "markDelivered": "تحديد كمُسلم",
+  "updating": "جاري التحديث...",
+
+  "error": "حدث خطأ ما"
+},
+"analytics": {
+  "title": "تحليلات الطلبات",
+  "allMonths": "كل الأشهر",
+  "revenue": "الإيرادات (ريال عماني)",
+  "orders": "الطلبات",
+  "summary": "ملخص"
+},
+"checkoutSteps": {
+  "signIn": "تسجيل الدخول",
+  "shipping": "الشحن",
+  "payment": "الدفع",
+  "placeOrder": "تأكيد الطلب"
 }
 
 }

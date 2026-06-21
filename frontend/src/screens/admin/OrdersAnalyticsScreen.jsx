@@ -3,6 +3,7 @@ import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 import { Form, Card } from "react-bootstrap";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
+import { useTranslation } from "react-i18next";
 
 import {
   LineChart,
@@ -18,6 +19,8 @@ import {
 import "../../assets/styles/ordersAnalytics.css";
 
 const OrdersAnalyticsScreen = () => {
+  const { t } = useTranslation();
+
   const { data: orders, isLoading, error } = useGetOrdersQuery();
   const [selectedMonth, setSelectedMonth] = useState("all");
 
@@ -56,68 +59,73 @@ const OrdersAnalyticsScreen = () => {
   return (
     <div className="analytics-page">
 
-  <h2 className="analytics-title">📊 Orders Analytics</h2>
+      <h2 className="analytics-title">
+        📊 {t("analytics.title")}
+      </h2>
 
-  {/* FILTER */}
-  <Card className="analytics-filter-card">
-    <Form.Select
-      className="analytics-select"
-      value={selectedMonth}
-      onChange={(e) => setSelectedMonth(e.target.value)}
-    >
-      <option value="all">All Months</option>
-      {months.map((m) => (
-        <option key={m} value={m}>
-          {m}
-        </option>
-      ))}
-    </Form.Select>
-  </Card>
+      {/* FILTER */}
+      <Card className="analytics-filter-card">
+        <Form.Select
+          className="analytics-select"
+          value={selectedMonth}
+          onChange={(e) => setSelectedMonth(e.target.value)}
+        >
+          <option value="all">
+            {t("analytics.allMonths")}
+          </option>
 
-  {/* CHART */}
-  <Card className="analytics-chart-card">
-    <ResponsiveContainer width="100%" height={380}>
-      <LineChart data={chartData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
+          {months.map((m) => (
+            <option key={m} value={m}>
+              {m}
+            </option>
+          ))}
+        </Form.Select>
+      </Card>
 
-        <Line
-          type="monotone"
-          dataKey="revenue"
-          stroke="#c9a227"
-          strokeWidth={2}
-          name="Revenue (OMR)"
-        />
+      {/* CHART */}
+      <Card className="analytics-chart-card">
+        <ResponsiveContainer width="100%" height={380}>
+          <LineChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
 
-        <Line
-          type="monotone"
-          dataKey="orders"
-          stroke="#5a2e27"
-          strokeWidth={2}
-          name="Orders"
-        />
-      </LineChart>
-    </ResponsiveContainer>
-  </Card>
+            <Line
+              type="monotone"
+              dataKey="revenue"
+              stroke="#c9a227"
+              strokeWidth={2}
+              name={t("analytics.revenue")}
+            />
 
-  {/* SUMMARY */}
-  <Card className="analytics-summary">
-    <h5>Summary</h5>
+            <Line
+              type="monotone"
+              dataKey="orders"
+              stroke="#5a2e27"
+              strokeWidth={2}
+              name={t("analytics.orders")}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </Card>
 
-    {chartData.map((m) => (
-      <div className="analytics-summary-item" key={m.month}>
-        <span>{m.month}</span>
-        <span>
-          {m.revenue.toFixed(2)} OMR ({m.orders})
-        </span>
-      </div>
-    ))}
-  </Card>
+      {/* SUMMARY */}
+      <Card className="analytics-summary">
+        <h5>{t("analytics.summary")}</h5>
 
-</div>
+        {chartData.map((m) => (
+          <div className="analytics-summary-item" key={m.month}>
+            <span>{m.month}</span>
+            <span>
+              {m.revenue.toFixed(2)} OMR ({m.orders})
+            </span>
+          </div>
+        ))}
+      </Card>
+
+    </div>
   );
 };
 

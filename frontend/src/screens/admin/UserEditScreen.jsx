@@ -53,7 +53,6 @@ const UserEditScreen = () => {
   };
 
   return (
-    <div className="lux-edit-wrapper">
       <div className="lux-edit-card">
 
         {/* ❌ no common namespace */}
@@ -121,7 +120,6 @@ const UserEditScreen = () => {
           </Form>
         )}
       </div>
-    </div>
   );
 };
 

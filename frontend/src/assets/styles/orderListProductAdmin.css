@@ -25,6 +25,23 @@ body {
   font-size: 14px;
   margin-top: 4px;
 }
+.floating-bill-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  padding: 12px 18px;
+  border-radius: 12px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+  transition: all 0.3s ease;
+}
+
+.floating-bill-btn:hover {
+  transform: translateY(-3px);
+}
 
 /* RIGHT SIDE */
 .lux-page-header-right {

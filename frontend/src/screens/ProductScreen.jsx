@@ -148,13 +148,14 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroup.Item>
 
+                  {/* ✅ FIXED MULTILINGUAL STATUS */}
                   <ListGroup.Item>
                     <Row>
                       <Col>{t("product.status")}:</Col>
                       <Col>
                         {product.countInStock > 0
-                          ? "In Stock"
-                          : "Out of Stock"}
+                          ? t("product.inStock")
+                          : t("product.outOfStock")}
                       </Col>
                     </Row>
                   </ListGroup.Item>

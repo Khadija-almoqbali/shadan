@@ -3,18 +3,15 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Form } from "react-bootstrap";
 import { FaTimes } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-
 import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 import "../../assets/styles/adminOrderList.css";
-
-import { jsPDF } from "jspdf";
-import autoTable from "jspdf-autotable";
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 const OrderListScreen = () => {
-  const { t } = useTranslation();
+  const { t} = useTranslation();
 
   const { data: orders, isLoading, error } = useGetOrdersQuery();
 
@@ -46,82 +43,12 @@ const OrderListScreen = () => {
 
   const groupedOrders = groupByMonth(filteredOrders || []);
 
-  // 🧾 PDF
-  const generateBill = () => {
-    const doc = new jsPDF();
+  const invoiceRef = useRef();
 
-    selectedOrders.forEach((id, index) => {
-      const order = orders.find((o) => o._id === id);
-      if (!order) return;
-
-      if (index !== 0) doc.addPage();
-
-      let y = 15;
-
-      doc.setFontSize(16);
-      doc.text(t("orders.invoice"), 14, y);
-
-      y += 10;
-
-      doc.setFontSize(10);
-      doc.text(`${t("orders.name")}: ${order.user?.name || "-"}`, 14, y);
-      y += 7;
-
-      doc.text(`${t("orders.phone")}: ${order.shippingAddress?.phoneNumber || "-"}`, 14, y);
-      y += 7;
-
-      doc.text(`${t("orders.address")}: ${order.shippingAddress?.address || "-"}`, 14, y);
-      y += 7;
-
-      doc.text(`${t("orders.city")}: ${order.shippingAddress?.city || "-"}`, 14, y);
-      y += 7;
-
-      doc.text(`${t("orders.country")}: ${order.shippingAddress?.country || "-"}`, 14, y);
-      y += 7;
-
-      doc.text(
-        `${t("orders.deliveryType")}: ${
-          order.shippingAddress?.deliveryType === "office"
-            ? t("orders.officePickup")
-            : t("orders.homeDelivery")
-        }`,
-        14,
-        y
-      );
-
-      y += 10;
-
-      doc.text(`${t("orders.orderId")}: ${order._id}`, 14, y);
-      y += 7;
-
-      doc.text(`${t("orders.date")}: ${order.createdAt.substring(0, 10)}`, 14, y);
-      y += 10;
-
-      autoTable(doc, {
-        startY: y,
-        head: [[t("orders.product"), t("orders.qty"), t("orders.price"), t("orders.total")]],
-        body: order.orderItems.map((item) => [
-          item.name,
-          item.qty,
-          item.price,
-          (item.qty * item.price).toFixed(2),
-        ]),
-        theme: "grid",
-        styles: { fontSize: 10, cellPadding: 3 },
-        headStyles: { fillColor: [58, 31, 26] },
-      });
-
-      const finalY = doc.lastAutoTable.finalY + 10;
-
-      doc.setFontSize(12);
-      doc.text(`${t("orders.total")}: ${order.totalPrice} OMR`, 14, finalY);
-
-      doc.setFontSize(9);
-      doc.text(t("orders.thanks"), 14, finalY + 10);
-    });
-
-    doc.save("invoices.pdf");
-  };
+const generateBill = useReactToPrint({
+  content: () => invoiceRef.current,
+  documentTitle: "invoices",
+});
 
   return (
     <>
@@ -144,7 +71,7 @@ const OrderListScreen = () => {
 
       {/* BUTTON */}
       <Button
-        className="mb-3 lux-bill-btn"
+        className="mb-3 lux-bill-btn floating-bill-btn"
         disabled={selectedOrders.length === 0}
         onClick={generateBill}
       >

@@ -8,7 +8,7 @@
 
   padding: 40px;
 
-  border: 1px solid #ededed;
+  border: 1px solid #ffffff;
 
   box-shadow:
     0 12px 40px rgba(58, 31, 26, 0.12),
@@ -16,6 +16,8 @@
 
   transition: all 0.3s ease;
   margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .lux-title {
